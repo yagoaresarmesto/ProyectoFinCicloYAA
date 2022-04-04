@@ -2,28 +2,34 @@ package com.videojuegoshop.dao;
 
 import javax.persistence.EntityManager;
 
-public class JpaDAO<T> {
+public class JpaDAO<E> {
 
 	protected EntityManager entityManager;
-	
-	
+
 	public JpaDAO(EntityManager entityManager) {
 		super();
 		this.entityManager = entityManager;
 	}
-	
-	public T create (T t) {
-	
+
+	public E create(E entity) {
+
 		entityManager.getTransaction().begin();
-		
-		entityManager.persist(t);
+
+		entityManager.persist(entity);
 		entityManager.flush();
-		entityManager.refresh(t);
-		
+		entityManager.refresh(entity);
+
 		entityManager.getTransaction().commit();
-		
-		
-		return t;
-		
+
+		return entity;
+
+	}
+
+	public E update(E entity) {
+		entityManager.getTransaction().begin();
+		entity= entityManager.merge(entity);
+		entityManager.getTransaction().commit();
+		return entity;
+
 	}
 }
