@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="../css/estilos.css">
+<script src="https://kit.fontawesome.com/f5b5688fc0.js" crossorigin="anonymous"></script>
 <title>Videojuegos Yago</title>
 </head>
 <body>
+
 	<jsp:directive.include file="header.jsp" />
 
 	<div align="center">
@@ -16,6 +19,68 @@
 		<h2>Favoritos</h2>
 	</div>
 
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
 	<jsp:directive.include file="footer.jsp" />
+
+	<script type="text/javascript">
+		window.addEventListener("scroll", function() {
+			var header = document.querySelector("header");
+			header.classList.toggle("header_abajo", window.scrollY > 0)
+		})
+	</script>
 </body>
 </html>
