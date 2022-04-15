@@ -5,12 +5,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="../css/estilos.css">
-<script src="https://kit.fontawesome.com/f5b5688fc0.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/f5b5688fc0.js"
+	crossorigin="anonymous"></script>
 <title>Videojuegos Yago</title>
 </head>
 <body>
 
 	<jsp:directive.include file="header.jsp" />
+
+	<h2>Categorias</h2>
 
 	<div align="center">
 		<h3>Contiene:</h3>

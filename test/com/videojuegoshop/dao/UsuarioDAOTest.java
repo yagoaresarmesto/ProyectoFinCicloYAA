@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
@@ -60,6 +61,42 @@ public class UsuarioDAOTest {
 		String actual = usuario.getContraseña();
 
 		assertEquals(expected, actual);
+	}
+
+	@Test
+	public void testGetUsersFound() {
+		Integer usuarioId = 1;
+		Usuarios usuario = usuarioDAO.get(usuarioId);
+		if (usuario != null) {
+			System.out.println(usuario.getEmail());
+		}
+
+		assertNotNull(usuario);
+	}
+
+	@Test
+	public void testGetUsersNotFound() {
+		Integer usuarioId = 99; // Obvimanete no tenemos un usuario con ese id
+		Usuarios usuario = usuarioDAO.get(usuarioId);
+
+		assertNull(usuario);
+	}
+
+	@Test
+	public void testDeleteUsers() {
+		Integer usuarioId = 13;
+		usuarioDAO.delete(usuarioId);
+
+		Usuarios usuario = usuarioDAO.get(usuarioId);
+
+		assertNull(usuario);
+
+	}
+
+	@Test(expected = EntityNotFoundException.class)
+	public void testDeleteNonExistUsers() {
+		Integer usuarioId = 99;
+		usuarioDAO.delete(usuarioId);
 	}
 
 	@AfterClass

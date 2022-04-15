@@ -19,20 +19,22 @@ body {
 	margin-top: 85px;
 }
 
+/*HEADER DE USUARIOS NORMALES*/
 .header {
 	display: grid;
-	grid-template-columns: 20% 50% 10% 10% 10%;
+	grid-template-columns: 20% 50% 7% 7% 7%;
 	background-color: #fff;
 	position: fixed;
 	top: 0;
 	width: 100%;
-	height: 70px;
+	height: 80px;
 	border-bottom: 1px solid #000000;
 }
 
 .contenedor-logo {
 	background-color: white;
 	border-bottom: 1px solid #000000;
+	padding-left: 50%;
 }
 
 .contenedor-buscador {
@@ -63,7 +65,8 @@ body {
 }
 
 ::placeholder {
-	color: black;
+	color: grey;
+	font-size: 15px;
 }
 
 .search-bar button {
@@ -83,10 +86,11 @@ body {
 	padding-bottom: 2%;
 	padding-left: 2%;
 	padding-right: 2%;
+	text-align: center;
 }
 
 .contenedor-botones-1 button {
-	font-size: 17px;
+	font-size: 25px;
 	color: black;
 	border: none;
 	cursor: pointer;
@@ -94,7 +98,9 @@ body {
 	text-align: center;
 	text-decoration: none;
 	background: transparent;
-    border-radius: 5px;
+	border-radius: 5px;
+	height: 100%;
+	color: orange;
 }
 
 .contenedor-botones-2 {
@@ -104,10 +110,11 @@ body {
 	padding-bottom: 2%;
 	padding-left: 2%;
 	padding-right: 2%;
+	text-align: center;
 }
 
 .contenedor-botones-2 button {
-	font-size: 17px;
+	font-size: 25px;
 	color: black;
 	border: none;
 	cursor: pointer;
@@ -115,9 +122,10 @@ body {
 	text-align: center;
 	text-decoration: none;
 	background: transparent;
-    border-radius: 5px;
+	border-radius: 5px;
+	height: 100%;
+	color: orange;
 }
-
 
 .contenedor-botones-3 {
 	background-color: white;
@@ -126,10 +134,11 @@ body {
 	padding-bottom: 2%;
 	padding-left: 2%;
 	padding-right: 2%;
+	text-align: center;
 }
 
 .contenedor-botones-3 button {
-	font-size: 17px;
+	font-size: 25px;
 	color: black;
 	border: none;
 	cursor: pointer;
@@ -137,19 +146,21 @@ body {
 	text-align: center;
 	text-decoration: none;
 	background: transparent;
-    border-radius: 5px;
+	border-radius: 5px;
+	height: 100%;
+	color: orange;
 }
 
-
-
-.contenedor-botones-1 button:hover{
-	background-color: #e8e8e8;
+.contenedor-botones-1 button:hover {
+		background-color: #f5f5f5;
 }
 
-.contenedor-botones-2 button:hover{
-	background-color: #e8e8e8;
+.contenedor-botones-2 button:hover {
+		background-color: #f5f5f5;
 }
 
-.contenedor-botones-3 button:hover{
-	background-color: #e8e8e8;
+.contenedor-botones-3 button:hover {
+	background-color: #f5f5f5;
 }
+
+/*_________________________________________________________*/
