@@ -2,6 +2,8 @@ package com.videojuegoshop.dao;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityNotFoundException;
@@ -84,7 +86,7 @@ public class UsuarioDAOTest {
 
 	@Test
 	public void testDeleteUsers() {
-		Integer usuarioId = 13;
+		Integer usuarioId = 10;
 		usuarioDAO.delete(usuarioId);
 
 		Usuarios usuario = usuarioDAO.get(usuarioId);
@@ -97,6 +99,25 @@ public class UsuarioDAOTest {
 	public void testDeleteNonExistUsers() {
 		Integer usuarioId = 99;
 		usuarioDAO.delete(usuarioId);
+	}
+
+	@Test
+	public void testListAll() {
+		List<Usuarios> listaUsuarios = usuarioDAO.listAll();
+
+		for (Usuarios usuario : listaUsuarios) {
+			System.out.println(usuario.getEmail());
+		}
+		
+		assertTrue(listaUsuarios.size() > 0);
+	}
+	
+	
+	@Test
+	public void testCount() {
+		long totalUsuarios = usuarioDAO.count();
+		assertEquals(9, totalUsuarios);
+		
 	}
 
 	@AfterClass

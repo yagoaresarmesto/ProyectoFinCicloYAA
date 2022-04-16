@@ -5,9 +5,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({ @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u ORDER BY u.apellidos"),
+@NamedQuery(name = "Usuarios.countAll", query = "SELECT Count(*) FROM Usuarios u")
+})
 public class Usuarios {
 
 	private Integer usuarioId;
@@ -15,8 +19,7 @@ public class Usuarios {
 	private String apellidos;
 	private String contraseña;
 
-
-	@Column(name = "usuario_id") //Lo especifico porque en mi base de datos es diferente
+	@Column(name = "usuario_id") // Lo especifico porque en mi base de datos es diferente
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getUsuarioId() {
