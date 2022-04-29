@@ -12,7 +12,7 @@
 	<div align="center">
 		<h2>Administración de Usuarios</h2>
 		<h3>
-			<a href="">Crear nuevo Usuario</a>
+			<a href="user_form.jsp">Crear nuevo Usuario</a>
 		</h3>
 	</div>
 
