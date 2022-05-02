@@ -10,7 +10,7 @@ public class UsuariosTest {
 
 	public static void main(String[] args) {
 
-		Usuarios usuario1 = new Usuarios();
+		Usuarios usuario1 = new Usuarios (null, null, null);
 		usuario1.setEmail("jesus2@gmail.com");
 		usuario1.setApellidos("Jesus Ares Amresto");
 		usuario1.setContraseña("todossomos2");

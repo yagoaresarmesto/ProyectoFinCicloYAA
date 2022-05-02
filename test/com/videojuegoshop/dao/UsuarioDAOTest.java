@@ -32,7 +32,7 @@ public class UsuarioDAOTest {
 
 	@Test
 	public void testCreateUsuarios() {
-		Usuarios usuario1 = new Usuarios();
+		Usuarios usuario1 = new Usuarios(null, null, null);
 		usuario1.setEmail("papa2@gmail.com");
 		usuario1.setApellidos("Jesus Ares Pardo");
 		usuario1.setContraseña("todossomos4");
@@ -44,7 +44,7 @@ public class UsuarioDAOTest {
 
 	@Test(expected = PersistenceException.class)
 	public void testCreateUsuariosFieldsNotSet() {
-		Usuarios usuario1 = new Usuarios();
+		Usuarios usuario1 = new Usuarios(null, null, null);
 
 		usuario1 = usuarioDAO.create(usuario1);
 
@@ -52,7 +52,7 @@ public class UsuarioDAOTest {
 
 	@Test
 	public void testUpdateUsuarios() {
-		Usuarios usuario = new Usuarios();
+		Usuarios usuario = new Usuarios(null, null, null);
 		usuario.setUsuarioId(1);
 		usuario.setEmail("yagofingoi12345@gmail.com");
 		usuario.setApellidos("Yago nombre cambiado");

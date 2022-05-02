@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.videojuegoshop.service.UsuarioServices;
+
 @WebServlet("/admin/create_user")
 public class CreateUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -14,7 +16,12 @@ public class CreateUserServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		String email = request.getParameter("email");
+		
+	
+	UsuarioServices usuarioServicies = new UsuarioServices(request, response);
+	usuarioServicies.createUser();
+	usuarioServicies.listUser("Usuario creado correctamente" );
+	
 	}
 
 }

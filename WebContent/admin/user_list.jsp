@@ -16,6 +16,12 @@
 		</h3>
 	</div>
 
+	<c:if test="${message !=null}">
+		<div align="center">
+			<h4>${message}</h4>
+		</div>
+	</c:if>
+	
 	<div align="center">
 
 		<table border="1" cellpadding="5">
@@ -28,14 +34,11 @@
 			</tr>
 			<c:forEach var="usuario" items="${listaUsuarios}" varStatus="status">
 				<tr>
-				<td>${status.index +1}</td>
-				<td>${usuario.usuarioId}</td>
-				<td>${usuario.email}</td>
-				<td>${usuario.apellidos}</td>
-				<td>
-				<a href="">Editar</a>&nbsp;
-				<a href="">Eliminar</a>
-				</td>
+					<td>${status.index +1}</td>
+					<td>${usuario.usuarioId}</td>
+					<td>${usuario.email}</td>
+					<td>${usuario.apellidos}</td>
+					<td><a href="">Editar</a>&nbsp; <a href="">Eliminar</a></td>
 				</tr>
 			</c:forEach>
 		</table>

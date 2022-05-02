@@ -10,14 +10,24 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u ORDER BY u.apellidos"),
-@NamedQuery(name = "Usuarios.countAll", query = "SELECT Count(*) FROM Usuarios u")
-})
+		@NamedQuery(name = "Usuarios.countAll", query = "SELECT Count(*) FROM Usuarios u") })
 public class Usuarios {
 
 	private Integer usuarioId;
 	private String email;
 	private String apellidos;
 	private String contraseña;
+
+	public Usuarios() {
+
+	}
+
+	public Usuarios(String email, String apellidos, String contraseña) {
+		super();
+		this.email = email;
+		this.apellidos = apellidos;
+		this.contraseña = contraseña;
+	}
 
 	@Column(name = "usuario_id") // Lo especifico porque en mi base de datos es diferente
 	@Id
