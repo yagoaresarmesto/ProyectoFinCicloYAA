@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -9,7 +10,15 @@
 <body>
 	<jsp:directive.include file="header.jsp" />
 	<div align="center">
-		<h2>Crear nuevo usuario</h2>
+
+		<h2>
+			<c:if test="${usuario != null}">
+	Editar Usuario
+	</c:if>
+			<c:if test="${usuario == null}">
+		Crear nuevo usuario
+			</c:if>
+		</h2>
 	</div>
 	<hr>
 	<div align="center">
@@ -19,25 +28,25 @@
 				<tr>
 					<td align="right">Email:</td>
 					<td align="left"><input type="text" id="email" name="email"
-						size="20" /></td>
+						size="20" value="${usuario.email}" /></td>
 				</tr>
 				<tr>
 					<td align="right">Apellidos:</td>
 					<td align="left"><input type="text" id="apellidos"
-						name="apellidos" size="20" /></td>
+						name="apellidos" size="20" value=${usuario.apellidos}/></td>
 				</tr>
 				<tr>
 					<td align="right">Contraseña:</td>
 					<td align="left"><input type="password" id="contraseña"
-						name="contraseña" size="20" /></td>
+						name="contraseña" size="20" value=${usuario.contraseña}/></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit"
-						value="Save">
-						<input type="button" value="Cancel" onclick="javascript:history.go(-1);"></td>
+						value="Save"> <input type="button" value="Cancel"
+						onclick="javascript:history.go(-1);"></td>
 				</tr>
 			</table>
 		</form>

@@ -108,15 +108,23 @@ public class UsuarioDAOTest {
 		for (Usuarios usuario : listaUsuarios) {
 			System.out.println(usuario.getEmail());
 		}
-		
+
 		assertTrue(listaUsuarios.size() > 0);
 	}
-	
-	
+
 	@Test
 	public void testCount() {
 		long totalUsuarios = usuarioDAO.count();
 		assertEquals(9, totalUsuarios);
+
+	}
+
+	@Test
+	public void testFindByEmail() {
+		String email = "yagofingoi12345@gmail.com";
+		Usuarios usuario = usuarioDAO.findByEmail(email);
+		
+		assertNotNull(usuario);
 		
 	}
 

@@ -10,7 +10,9 @@ import javax.persistence.NamedQuery;
 
 @Entity
 @NamedQueries({ @NamedQuery(name = "Usuarios.findAll", query = "SELECT u FROM Usuarios u ORDER BY u.apellidos"),
+		@NamedQuery(name = "Usuarios.findByEmail", query = "SELECT u FROM Usuarios u WHERE u.email = :email"),
 		@NamedQuery(name = "Usuarios.countAll", query = "SELECT Count(*) FROM Usuarios u") })
+
 public class Usuarios {
 
 	private Integer usuarioId;
