@@ -70,7 +70,6 @@ public class UsuarioServices {
 			usuarioDAO.create(nuevoUsuario);
 			listUser("Usuario creado correctamente");
 		}
-
 	}
 
 	public void editUser() throws ServletException, IOException {
@@ -82,7 +81,34 @@ public class UsuarioServices {
 		request.setAttribute("usuario", usuario);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(editPage);
 		requestDispatcher.forward(request, response);
-		
 
 	}
+
+	public void updateUser() throws ServletException, IOException {
+		int usuarioId = Integer.parseInt(request.getParameter("usuarioId"));
+		String email = request.getParameter("email");
+		String apellidos = request.getParameter("apellidos");
+		String contraseña = request.getParameter("contraseña");
+
+		Usuarios usuarioById = usuarioDAO.get(usuarioId);
+
+		Usuarios usuarioByEmail = usuarioDAO.findByEmail(email);
+
+		if (usuarioByEmail != null && usuarioByEmail.getUsuarioId() != usuarioById.getUsuarioId()) {
+			String message = "No se pudo actualizar el usuario, el email ya ha sido usado";
+			request.setAttribute("message", message);
+
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("message.jsp");
+			requestDispatcher.forward(request, response);
+
+		} else {
+			Usuarios usuario = new Usuarios(usuarioId, email, apellidos, contraseña);
+			usuarioDAO.update(usuario);
+
+			String message = "Usuario ha sido actualizado con éxito";
+			listUser(message);
+		}
+
+	}
+
 }

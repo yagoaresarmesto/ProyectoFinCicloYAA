@@ -24,6 +24,11 @@ public class Usuarios {
 
 	}
 
+	public Usuarios(Integer usuarioId, String email, String apellidos, String contraseña) {
+		this(email, apellidos, contraseña);
+		this.usuarioId = usuarioId;
+	}
+
 	public Usuarios(String email, String apellidos, String contraseña) {
 		super();
 		this.email = email;

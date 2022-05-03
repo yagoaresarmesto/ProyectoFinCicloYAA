@@ -22,33 +22,40 @@
 	</div>
 	<hr>
 	<div align="center">
-		<form action="create_user" method="post"
-			onsubmit="return validateFormInput()">
-			<table>
-				<tr>
-					<td align="right">Email:</td>
-					<td align="left"><input type="text" id="email" name="email"
-						size="20" value="${usuario.email}" /></td>
-				</tr>
-				<tr>
-					<td align="right">Apellidos:</td>
-					<td align="left"><input type="text" id="apellidos"
-						name="apellidos" size="20" value=${usuario.apellidos}/></td>
-				</tr>
-				<tr>
-					<td align="right">Contraseña:</td>
-					<td align="left"><input type="password" id="contraseña"
-						name="contraseña" size="20" value=${usuario.contraseña}/></td>
-				</tr>
-				<tr>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="Save"> <input type="button" value="Cancel"
-						onclick="javascript:history.go(-1);"></td>
-				</tr>
-			</table>
+		<c:if test="${usuario != null}">
+			<form action="update_user" method="post"
+				onsubmit="return validateFormInput()">
+				<input type="hidden" name="usuarioId" value="${usuario.usuarioId }">
+		</c:if>
+		<c:if test="${usuario == null}">
+			<form action="create_user" method="post"
+				onsubmit="return validateFormInput()">
+		</c:if>
+		<table>
+			<tr>
+				<td align="right">Email:</td>
+				<td align="left"><input type="text" id="email" name="email"
+					size="20" value="${usuario.email}" /></td>
+			</tr>
+			<tr>
+				<td align="right">Apellidos:</td>
+				<td align="left"><input type="text" id="apellidos"
+					name="apellidos" size="20" value=${usuario.apellidos } /></td>
+			</tr>
+			<tr>
+				<td align="right">Contraseña:</td>
+				<td align="left"><input type="password" id="contraseña"
+					name="contraseña" size="20" value=${usuario.contraseña } /></td>
+			</tr>
+			<tr>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center"><input type="submit"
+					value="Save"> <input type="button" value="Cancel"
+					onclick="javascript:history.go(-1);"></td>
+			</tr>
+		</table>
 		</form>
 	</div>
 
