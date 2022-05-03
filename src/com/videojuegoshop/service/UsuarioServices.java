@@ -111,4 +111,11 @@ public class UsuarioServices {
 
 	}
 
+	public void deleteUser() throws ServletException, IOException {
+		int usuarioId = Integer.parseInt(request.getParameter("id"));
+		usuarioDAO.delete(usuarioId);
+		String message = "Usuario ha sido eliminado con éxito";
+		listUser(message);
+	}
+
 }

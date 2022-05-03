@@ -21,7 +21,7 @@
 			<h4>${message}</h4>
 		</div>
 	</c:if>
-	
+
 	<div align="center">
 
 		<table border="1" cellpadding="5">
@@ -38,7 +38,8 @@
 					<td>${usuario.usuarioId}</td>
 					<td>${usuario.email}</td>
 					<td>${usuario.apellidos}</td>
-					<td><a href="edit_user?id=${usuario.usuarioId}">Editar</a>&nbsp; <a href="">Eliminar</a></td>
+					<td><a href="edit_user?id=${usuario.usuarioId}">Editar</a>&nbsp;
+						<a href="javascript:confirmDelete(${usuario.usuarioId})">Eliminar</a></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -46,5 +47,14 @@
 	</div>
 
 	<jsp:directive.include file="footer.jsp" />
+
+	<script>
+		function confirmDelete(usuarioId) {
+			if (confirm('¿Quiere eliminar este usuario con ID ' + usuarioId
+					+ ' ?')) {
+				window.location = 'delete_user?id=' + usuarioId;
+			}
+		}
+	</script>
 </body>
 </html>
