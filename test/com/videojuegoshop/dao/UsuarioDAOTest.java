@@ -16,24 +16,20 @@ import org.junit.Test;
 
 import com.videojuegoshop.enitity.Usuarios;
 
-public class UsuarioDAOTest {
-	private static EntityManagerFactory entityManagerFactory;
-	private static EntityManager entityManager;
+public class UsuarioDAOTest extends BaseDAOTest {
+
 	private static UsuarioDAO usuarioDAO;
 
 	@BeforeClass
-	public static void setUpClass() {
-
-		entityManagerFactory = Persistence.createEntityManagerFactory("PFCYAA");
-		entityManager = entityManagerFactory.createEntityManager();
-
+	public static void setUpClass() throws Exception {
+		BaseDAOTest.setUpBeforeClass();
 		usuarioDAO = new UsuarioDAO(entityManager);
 	}
 
 	@Test
 	public void testCreateUsuarios() {
 		Usuarios usuario1 = new Usuarios(null, null, null);
-		usuario1.setEmail("papa2@gmail.com");
+		usuario1.setEmail("papa32@gmail.com");
 		usuario1.setApellidos("Jesus Ares Pardo");
 		usuario1.setContraseña("todossomos4");
 
@@ -123,15 +119,9 @@ public class UsuarioDAOTest {
 	public void testFindByEmail() {
 		String email = "yagofingoi12345@gmail.com";
 		Usuarios usuario = usuarioDAO.findByEmail(email);
-		
-		assertNotNull(usuario);
-		
-	}
 
-	@AfterClass
-	public static void tearDownClass() {
-		entityManager.close();
-		entityManagerFactory.close();
+		assertNotNull(usuario);
+
 	}
 
 }
