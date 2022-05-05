@@ -9,7 +9,7 @@
 <div align="center">
 <b>
 	<a href="list_usuarios">Usuarios</a> | 
-	<a href="">Categorias</a> | 
+	<a href="list_category">Categorias</a> | 
 	<a href="">Videojuegos</a>
 	| <a href="">Clientes</a> | 
 	<a href="">Reviews</a> | 

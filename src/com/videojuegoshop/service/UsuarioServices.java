@@ -16,18 +16,15 @@ import com.videojuegoshop.enitity.Usuarios;
 
 public class UsuarioServices {
 
-	private EntityManagerFactory entityManagerFactory;
 	private EntityManager entityManager;
 	private UsuarioDAO usuarioDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public UsuarioServices(HttpServletRequest request, HttpServletResponse response) {
+	public UsuarioServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
-
-		entityManagerFactory = Persistence.createEntityManagerFactory("PFCYAA");
-		entityManager = entityManagerFactory.createEntityManager();
+		this.entityManager = entityManager;
 		usuarioDAO = new UsuarioDAO(entityManager);
 	}
 
