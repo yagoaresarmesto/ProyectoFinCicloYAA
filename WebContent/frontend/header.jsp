@@ -1,11 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header class="header">
 	<div class="contenedor-logo">
 
 		<img
 			src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
 			width="120" height="80">
-
-
 
 	</div>
 	<div class="contenedor-buscador">
@@ -36,9 +35,22 @@
 
 		<button type="submit">
 
-		<i class="fa-solid fa-cart-shopping"></i>
-		
-		</button>
+			<i class="fa-solid fa-cart-shopping"></i>
 
+		</button>
 	</div>
 </header>
+
+
+<div>
+	<c:forEach var="categoria" items="${listaCategoria }">
+		<a href="view_category?id=${categoria.categoriaId }"> <b></b> <c:out value="${categoria.nombre }" /> |
+		</a>
+		<c:if test="${not status.last }">
+			&nbsp; | &nbsp;
+			</c:if>
+	</c:forEach>
+	&nbsp; 	&nbsp;
+</div>
+
+

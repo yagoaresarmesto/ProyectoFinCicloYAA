@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Crear Nueva Categoria</title>
+<title><c:if test="${categoria != null}">
+	Editar Categoria
+	</c:if> <c:if test="${categoria == null}">
+		Crear nueva categoria
+			</c:if></title>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -25,7 +29,8 @@
 		<c:if test="${categoria != null}">
 			<form action="update_category" method="post"
 				onsubmit="return validateFormInput()">
-				<input type="hidden" name="categoriaId" value="${categoria.categoriaId }">
+				<input type="hidden" name="categoriaId"
+					value="${categoria.categoriaId }">
 		</c:if>
 		<c:if test="${categoria == null}">
 			<form action="create_category" method="post"
@@ -57,7 +62,6 @@
 	function validateFormInput() {
 
 		var fieldName = document.getElementById("nombre");
-	
 
 		if (fieldName.value.length == 0) {
 

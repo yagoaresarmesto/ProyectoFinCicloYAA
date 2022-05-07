@@ -47,10 +47,10 @@
 	<jsp:directive.include file="footer.jsp" />
 
 	<script>
-		function confirmDelete(usuarioId) {
-			if (confirm('¿Quiere eliminar este usuario con ID ' + usuarioId
+		function confirmDelete(categoriaId) {
+			if (confirm('¿Quiere eliminar esta categoría con ID ' + categoriaId
 					+ ' ?')) {
-				window.location = 'delete_user?id=' + usuarioId;
+				window.location = 'delete_category?id=' + categoriaId;
 			}
 		}
 	</script>

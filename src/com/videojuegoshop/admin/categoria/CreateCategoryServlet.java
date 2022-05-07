@@ -1,6 +1,6 @@
 package com.videojuegoshop.admin.categoria;
 
-import com.videojuegoshop.admin.BaseServlet;
+import com.videojuegoshop.controller.BaseServlet;
 import com.videojuegoshop.service.CategoriaServices;
 
 import java.io.IOException;

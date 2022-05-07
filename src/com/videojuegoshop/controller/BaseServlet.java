@@ -1,4 +1,4 @@
-package com.videojuegoshop.admin;
+package com.videojuegoshop.controller;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
