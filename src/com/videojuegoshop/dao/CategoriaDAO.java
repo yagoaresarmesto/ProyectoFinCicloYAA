@@ -10,7 +10,7 @@ public class CategoriaDAO extends JpaDAO<Categoria> implements GenericDAO<Catego
 
 	public CategoriaDAO(EntityManager entityManager) {
 		super(entityManager);
-	
+
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public class CategoriaDAO extends JpaDAO<Categoria> implements GenericDAO<Catego
 	@Override
 	public Categoria update(Categoria categoria) {
 		return super.update(categoria);
-	
+
 	}
 
 	@Override
@@ -31,7 +31,7 @@ public class CategoriaDAO extends JpaDAO<Categoria> implements GenericDAO<Catego
 
 	@Override
 	public void delete(Object id) {
-		super.delete(Categoria.class, id);	
+		super.delete(Categoria.class, id);
 	}
 
 	@Override
@@ -44,4 +44,13 @@ public class CategoriaDAO extends JpaDAO<Categoria> implements GenericDAO<Catego
 		return super.countWithNamedQuery("Categoria.countAll");
 	}
 
+	public Categoria findByName(String categoryName) {
+		List<Categoria> result = super.findWithNamedQuery("Categoria.findByName", "nombre", categoryName);
+
+		if (result != null && result.size() > 0) {
+			return result.get(0);
+		}
+
+		return null;
+	}
 }
