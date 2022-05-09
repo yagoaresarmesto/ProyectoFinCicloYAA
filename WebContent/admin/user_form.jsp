@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../css/estilos.css">
 <script src="https://kit.fontawesome.com/f5b5688fc0.js"
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -26,13 +28,11 @@
 	<hr>
 	<div align="center">
 		<c:if test="${usuario != null}">
-			<form action="update_user" method="post"
-				onsubmit="return validateFormInput()">
+			<form action="update_user" method="post" id="userForm">
 				<input type="hidden" name="usuarioId" value="${usuario.usuarioId }">
 		</c:if>
 		<c:if test="${usuario == null}">
-			<form action="create_user" method="post"
-				onsubmit="return validateFormInput()">
+			<form action="create_user" method="post" id="userForm">
 		</c:if>
 		<table>
 			<tr>
@@ -55,8 +55,9 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
-					value="Save"> <input type="button" value="Cancel"
-					onclick="javascript:history.go(-1);"></td>
+					value="Save">
+					
+					<button id="buttonCancel"> Cancelar</button>
 			</tr>
 		</table>
 		</form>
@@ -67,42 +68,34 @@
 
 
 <script type="text/javascript">
-	function validateFormInput() {
-
-		var fieldEmail = document.getElementById("email");
-		var fieldFullname = document.getElementById("apellidos");
-		var fieldPassword = document.getElementById("contraseña");
-
-		if (fieldEmail.value.length == 0) {
-
-			alert("Email es requerido!!!");
-
-			fieldEmail.focus();
-
-			return false;
-
-		}
-
-		if (fieldFullname.value.length == 0) {
-
-			alert("Apellidos es requerido!!!");
-
-			fieldFullname.focus();
-
-			return false;
-
-		}
-
-		if (fieldPassword.value.length == 0) {
-
-			alert("Contraseña es requerida!!!");
-
-			fieldPassword.focus();
-
-			return false;
-
-		}
-	}
+	$(document).ready(function(){
+		$("#userForm").validate({
+			rules : {
+				email: {
+					required: true,
+					email: true
+				},
+				apellidos: "required",
+				contraseña: "required",
+				
+			},
+			
+			messages: {
+				email: {
+					required: "Porfavor introduzca un correo",
+					email: "Porfavor introduce una dirección válida"
+				},
+				
+				apellidos: "Porfavor introduce los apellidos",
+				contraseña: "Porfavor introduce una contraseña"
+			}
+			
+		});	
+		
+		$("#buttonCancel").click(function() {
+			history.go(-1);
+		});
+	});	
 </script>
 
 </html>

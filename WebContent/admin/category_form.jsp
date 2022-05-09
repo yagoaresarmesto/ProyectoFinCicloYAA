@@ -14,6 +14,8 @@
 <link rel="stylesheet" href="../css/estilos.css">
 <script src="https://kit.fontawesome.com/f5b5688fc0.js"
 	crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -31,14 +33,12 @@
 	<hr>
 	<div align="center">
 		<c:if test="${categoria != null}">
-			<form action="update_category" method="post"
-				onsubmit="return validateFormInput()">
+			<form action="update_category" method="post" id="categoryForm">
 				<input type="hidden" name="categoriaId"
 					value="${categoria.categoriaId }">
 		</c:if>
 		<c:if test="${categoria == null}">
-			<form action="create_category" method="post"
-				onsubmit="return validateFormInput()">
+			<form action="create_category" method="post" id="categoryForm">
 		</c:if>
 		<table>
 			<tr>
@@ -51,8 +51,8 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
-					value="Save"> <input type="button" value="Cancel"
-					onclick="javascript:history.go(-1);"></td>
+					value="Save">
+					<button id="buttonCancel">Cancelar</button></td>
 			</tr>
 		</table>
 		</form>
@@ -61,23 +61,21 @@
 	<jsp:directive.include file="footer.jsp" />
 </body>
 
-
 <script type="text/javascript">
-	function validateFormInput() {
+	$(document).ready(function() {
+		$("#categoryForm").validate({
+			rules : {
+				nombre : "required",
+			},
 
-		var fieldName = document.getElementById("nombre");
-
-		if (fieldName.value.length == 0) {
-
-			alert("Nombre de categoría es requerida!!!");
-
-			fieldName.focus();
-
-			return false;
-
-		}
-
-	}
+			messages : {
+				nombre : "Porfavor introduzca un nombre de categoría"
+			}
+		});
+		$("#buttonCancel").click(function() {
+			history.go(-1);
+		});
+	});
 </script>
 
 </html>

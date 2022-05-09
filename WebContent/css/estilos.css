@@ -195,3 +195,9 @@ body {
 	font-size: 15px;
 	border-bottom: 1px solid #000000;
 }
+
+/* referente al texto de jquery, validación de inputs*/
+.error {
+	color: red;
+	margin: 5px;
+}

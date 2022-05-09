@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="../css/estilos.css">
 <script src="https://kit.fontawesome.com/f5b5688fc0.js"
 	crossorigin="anonymous"></script>
+	<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -42,7 +44,7 @@
 					<td>${usuario.email}</td>
 					<td>${usuario.apellidos}</td>
 					<td><a href="edit_user?id=${usuario.usuarioId}">Editar</a>&nbsp;
-						<a href="javascript:confirmDelete(${usuario.usuarioId})">Eliminar</a></td>
+						<a href="javascript:void(0)" class="deleteLink" id="${usuario.usuarioId }">Eliminar</a></td>
 				</tr>
 			</c:forEach>
 		</table>
@@ -52,12 +54,17 @@
 	<jsp:directive.include file="footer.jsp" />
 
 	<script>
-		function confirmDelete(usuarioId) {
-			if (confirm('¿Quiere eliminar este usuario con ID ' + usuarioId
-					+ ' ?')) {
-				window.location = 'delete_user?id=' + usuarioId;
+	$(document).ready(function(){
+		$(".deleteLink").each(function(){
+			$(this).on("click", function(){
+				usuarioId = $(this).attr("id");
+				if (confirm('¿Quiere eliminar esta usuario con ID ' + usuarioId
+						+ ' ?')) {
+					window.location = 'delete_user?id=' + usuarioId;
 			}
-		}
+		});
+		});
+		});
 	</script>
 </body>
 </html>
