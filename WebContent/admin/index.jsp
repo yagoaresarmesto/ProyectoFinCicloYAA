@@ -4,7 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" href="../css/estilos.css">
 <title>Administration</title>
+<script src="https://kit.fontawesome.com/f5b5688fc0.js"
+	crossorigin="anonymous"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -28,6 +31,33 @@
 		<h2>Estadísticas:</h2>
 	</div>
 <hr>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
 	<jsp:directive.include file="footer.jsp" />
 </body>
 </html>

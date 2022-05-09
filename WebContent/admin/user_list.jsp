@@ -6,6 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Manejar Usuarios</title>
+<link rel="stylesheet" href="../css/estilos.css">
+<script src="https://kit.fontawesome.com/f5b5688fc0.js"
+	crossorigin="anonymous"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
