@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header class="header-admin">
 	<div class="contenedor-logo-admin">
 		<img
@@ -10,7 +10,7 @@
 	</div>
 
 	<div class="contenedor-login-logout-admin">
-		Bienvenido, Yago (o quien sea) | <a href="Logout">Logout</a>
+		Bienvenido, <c:out value="${sessionScope.useremail }"/> | <a href="logout">Logout</a>
 	</div>
 </header>
 

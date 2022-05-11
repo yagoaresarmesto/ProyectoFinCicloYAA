@@ -1,6 +1,8 @@
 package com.videojuegoshop.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 
@@ -30,11 +32,24 @@ public class UsuarioDAO extends JpaDAO<Usuarios> implements GenericDAO<Usuarios>
 
 	public Usuarios findByEmail(String email) {
 		List<Usuarios> listaUsuarios = super.findWithNamedQuery("Usuarios.findByEmail", "email", email);
-		
-		if (listaUsuarios != null  && listaUsuarios.size()== 1) {
+
+		if (listaUsuarios != null && listaUsuarios.size() == 1) {
 			return listaUsuarios.get(0);
 		}
 		return null;
+	}
+
+	public boolean checkLogin(String email, String contraseña) {
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("email", email);
+		parameters.put("contraseña", contraseña);
+
+		List<Usuarios> listaUsuarios = super.findWithNamedQuery("Usuarios.checkLogin", parameters);
+
+		if (listaUsuarios.size() == 1) {
+			return true;
+		}
+		return false;
 	}
 
 	@Override
