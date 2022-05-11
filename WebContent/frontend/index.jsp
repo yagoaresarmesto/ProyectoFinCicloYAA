@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="../css/estilos.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/estilos.css">
 <script src="https://kit.fontawesome.com/f5b5688fc0.js"
 	crossorigin="anonymous"></script>
 <title>Videojuegos Yago</title>
