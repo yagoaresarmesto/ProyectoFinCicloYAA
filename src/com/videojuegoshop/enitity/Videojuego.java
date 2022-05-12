@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -27,6 +29,11 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "videojuego", catalog = "videogameshopyaa", uniqueConstraints = @UniqueConstraint(columnNames = {
 		"titulo" }))
+@NamedQueries({
+	@NamedQuery(name = "Videojuego.findAll", query = "SELECT v FROM Videojuego v"),
+	@NamedQuery(name = "Videojuego.findByTitle", query = "SELECT v FROM Videojuego v WHERE v.titulo = :titulo"),
+	@NamedQuery(name = "Videojuego.countAll", query = "SELECT COUNT(*) FROM Videojuego v")
+})
 public class Videojuego implements java.io.Serializable {
 
 	private Integer videojuegoId;
@@ -73,7 +80,6 @@ public class Videojuego implements java.io.Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
 	@Column(name = "videojuego_id", unique = true, nullable = false)
 	public Integer getVideojuegoId() {
 		return this.videojuegoId;
@@ -166,7 +172,7 @@ public class Videojuego implements java.io.Serializable {
 		this.detallesPedidos = detallesPedidos;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "videojuego")
+/*	@OneToMany(fetch = FetchType.EAGER, mappedBy = "videojuego")
 	public Set<Review> getReviews() {
 		TreeSet<Review> sortedReviews = new TreeSet<>(new Comparator<Review>() {
 
@@ -184,5 +190,5 @@ public class Videojuego implements java.io.Serializable {
 	public void setReviews(Set<Review>  reviews) {
 		this.reviews = reviews;
 	}
-
+*/
 }
