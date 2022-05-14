@@ -186,25 +186,32 @@ public class Videojuego implements java.io.Serializable {
 		this.base64Image = base64Image;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((videojuegoId == null) ? 0 : videojuegoId.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Videojuego other = (Videojuego) obj;
+		if (videojuegoId == null) {
+			if (other.videojuegoId != null)
+				return false;
+		} else if (!videojuegoId.equals(other.videojuegoId))
+			return false;
+		return true;
+	}
+
 	
 
-/*	@OneToMany(fetch = FetchType.EAGER, mappedBy = "videojuego")
-	public Set<Review> getReviews() {
-		TreeSet<Review> sortedReviews = new TreeSet<>(new Comparator<Review>() {
 
-			@Override
-			public int compare(Review review1, Review review2) {
-				return review2.getReviewFecha().compareTo(review1.getReviewFecha());
-			}
-
-		});
-		sortedReviews.addAll(reviews);
-		return sortedReviews;
-
-	}
-
-	public void setReviews(Set<Review>  reviews) {
-		this.reviews = reviews;
-	}
-*/
 }

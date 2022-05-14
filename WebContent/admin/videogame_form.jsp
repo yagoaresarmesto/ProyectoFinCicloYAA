@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,18 +31,29 @@
 	<hr>
 	<div align="center">
 		<c:if test="${videojuego != null}">
-			<form action="update_user" method="post" id="videogameForm">
-				<input type="hidden" name="usuarioId" value="${usuario.usuarioId }">
+			<form action="update_videogame" method="post" id="videogameForm"
+				enctype="multipart/form-data">
+				<input type="hidden" name="videojuegoId"
+					value="${videojuego.videojuegoId }"/>
 		</c:if>
 		<c:if test="${videojuego == null}">
-			<form action="create_videogame" method="post" id="videogameForm">
+			<form action="create_videogame" method="post" id="videogameForm"
+				enctype="multipart/form-data">
 		</c:if>
 		<table>
 			<tr>
 				<td align="right">Categoria:</td>
 				<td><select name="categoria">
 						<c:forEach items="${listaCategoria}" var="categoria">
-							<option value="${categoria.categoriaId }">
+							<c:if
+								test="${ categoria.categoriaId eq videojuego.categoria.categoriaId}">
+								<option value="${categoria.categoriaId }" selected>
+							</c:if>
+							<c:if
+								test="${ categoria.categoriaId ne videojuego.categoria.categoriaId}">
+								<option value="${categoria.categoriaId }">
+							</c:if>
+						
 								${categoria.nombre}</option>
 						</c:forEach>
 				</select></td>
@@ -61,29 +73,27 @@
 				<td align="right">Fecha lanzamiento:</td>
 				<td align="left"><input type="text" id="fechaLanzamiento"
 					name="fechaLanzamiento" size="20"
-					value=${videojuego.fechaPublicacion } /></td>
+					value="<fmt:formatDate pattern= 'MM/dd/yyyy' value='${videojuego.fechaPublicacion }' />" /></td>
 			</tr>
 
 			</tr>
 			<tr>
 				<td align="right">Imagen Videojuego:</td>
-				<td align="left">
-				<input type="file" id="videojuegoImagen"
-					name="videojuegoImagen" size="20" /> <br>
-					<img id="thumbnail" alt="Imagen Preview" style= "width:40px; margin-top: 10px;"/>
-					</td>			
+				<td align="left"><input type="file" id="videojuegoImagen"
+					name="videojuegoImagen" size="20" /> <br> <img id="thumbnail"
+					alt="Imagen Preview" style="width: 40px; margin-top: 10px;"
+					src="data:image/jpg;base64,${videojuego.base64Image }" /></td>
 			</tr>
 			<tr>
 				<td align="right">Precio:</td>
-				<td align="left"><input type="text" id="precio"
-					name="precio" size="20"
-					value=${videojuego.precio} /></td>
+				<td align="left"><input type="text" id="precio" name="precio"
+					size="20" value=${videojuego.precio } /></td>
 			</tr>
-			
-				<tr>
+
+			<tr>
 				<td align="right">Descripción:</td>
-				<td align="left">
-				<textarea rows="5" cols="50" name="descripcion" id="descripcion"></textarea>
+				<td align="left"><textarea rows="5" cols="50"
+						name="descripcion" id="descripcion">${videojuego.descripcion }</textarea>
 				</td>
 			</tr>
 
