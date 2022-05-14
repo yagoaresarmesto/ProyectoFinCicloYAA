@@ -1,5 +1,6 @@
 package com.videojuegoshop.enitity;
 
+import java.util.Base64;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
@@ -20,6 +21,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -42,6 +44,7 @@ public class Videojuego implements java.io.Serializable {
 	private String compañia;
 	private String descripcion;
 	private byte[] imagen;
+	private String base64Image;
 	private float precio;
 	private Date fechaPublicacion;
 	private Date fechaActualizacion;
@@ -171,6 +174,19 @@ public class Videojuego implements java.io.Serializable {
 	public void setDetallesPedidos(Set<DetallesPedido> detallesPedidos) {
 		this.detallesPedidos = detallesPedidos;
 	}
+	
+	@Transient
+	public String getBase64Image() {
+		this.base64Image = Base64.getEncoder().encodeToString(this.imagen);
+		return this.base64Image;
+	}
+	
+	@Transient
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
+	}
+
+	
 
 /*	@OneToMany(fetch = FetchType.EAGER, mappedBy = "videojuego")
 	public Set<Review> getReviews() {
