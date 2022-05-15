@@ -180,4 +180,22 @@ public class VideojuegoServices {
 		
 	}
 
+	public void listVideogameByCategory() throws ServletException, IOException {
+		
+		int categoriaId = Integer.parseInt(request.getParameter("id"));
+		List<Videojuego> listaVidejuegos = videojuegoDAO.listarByCategoria(categoriaId);
+		Categoria categoria = categoriaDAO.get(categoriaId);
+		List<Categoria> listaCategoria = categoriaDAO.listAll();
+	
+		request.setAttribute("listaCategoria", listaCategoria);
+		request.setAttribute("listaVideojuegos", listaVidejuegos);
+		request.setAttribute("categoria", categoria);
+		
+		String listPage = "frontend/videogames_list_by_category.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
+		requestDispatcher.forward(request, response);		
+		
+		
+	}
+
 }

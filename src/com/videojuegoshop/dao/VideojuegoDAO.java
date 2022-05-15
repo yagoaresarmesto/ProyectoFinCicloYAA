@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.videojuegoshop.enitity.Videojuego;
 
@@ -51,6 +52,21 @@ public class VideojuegoDAO extends JpaDAO<Videojuego> implements GenericDAO<Vide
 			return resultado.get(0);
 		}
 		return null;
+
+	}
+
+	public List<Videojuego> listarByCategoria(int categoriaId) {
+
+		return super.findWithNamedQuery("Videojuego.findByCategory", "catId", categoriaId);
+
+	}
+
+	public List<Videojuego> listNewVideojuegos() {
+
+		Query query = entityManager.createNamedQuery("Videojuego.listNew");
+		query.setFirstResult(0);
+		query.setMaxResults(4);
+		return query.getResultList();
 
 	}
 

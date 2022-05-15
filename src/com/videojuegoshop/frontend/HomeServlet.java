@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.videojuegoshop.controller.BaseServlet;
 import com.videojuegoshop.dao.CategoriaDAO;
+import com.videojuegoshop.dao.VideojuegoDAO;
 import com.videojuegoshop.enitity.Categoria;
+import com.videojuegoshop.enitity.Videojuego;
 
 @WebServlet("")
 public class HomeServlet extends BaseServlet {
@@ -25,9 +27,17 @@ public class HomeServlet extends BaseServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		CategoriaDAO categoriaDAO = new CategoriaDAO(entityManager);
+		VideojuegoDAO videojuegoDAO = new VideojuegoDAO(entityManager);
+		
+		
 		List<Categoria> listaCategoria = categoriaDAO.listAll();
+		List<Videojuego> listaNuevosVideojuegos = videojuegoDAO.listNewVideojuegos();
+		
+		
+		
 		request.setAttribute("listaCategoria", listaCategoria);
-
+request.setAttribute("listaNuevosVideojuegos", listaNuevosVideojuegos);
+		
 		String homepage = "frontend/index.jsp"; // Redirección a la homePage
 		RequestDispatcher dispacher = request.getRequestDispatcher(homepage);
 		dispacher.forward(request, response);

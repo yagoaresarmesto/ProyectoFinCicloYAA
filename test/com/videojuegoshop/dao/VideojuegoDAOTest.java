@@ -184,4 +184,24 @@ public class VideojuegoDAOTest extends BaseDAOTest {
 		
 		assertEquals(2, totalVideojuegos);
 	}
+	
+	@Test
+	public void testListNewVideogame() {
+	List<Videojuego> listaNuevosVideojuegos = videojuegoDao.listNewVideojuegos();
+	for(Videojuego aVideojuego : listaNuevosVideojuegos) {
+		System.out.println(aVideojuego.getTitulo() +" - "+ aVideojuego.getFechaPublicacion());
+	}
+	assertEquals(4, listaNuevosVideojuegos.size());
+	}
+	
+	
+	@Test
+	public void listByCategory(){
+		int categoriaId = 4;
+		
+		List<Videojuego> listaVideojuegos = videojuegoDao.listarByCategoria(categoriaId);
+		
+		assertTrue(listaVideojuegos.size()>0);
+		
+	}
 }

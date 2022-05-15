@@ -49,7 +49,7 @@
 					<td>${videojuego.videojuegoId}</td>
 
 					<td><img
-						src="data:image/jpg;base64,${videojuego.base64Image }" widht="84"
+						src="data:image/jpg;base64,${videojuego.base64Image }" width="84"
 						height="110" /></td>
 					<td>${videojuego.titulo}</td>
 					<td>${videojuego.compañia}</td>

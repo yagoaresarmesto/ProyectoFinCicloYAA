@@ -34,7 +34,11 @@ import javax.persistence.UniqueConstraint;
 @NamedQueries({
 	@NamedQuery(name = "Videojuego.findAll", query = "SELECT v FROM Videojuego v"),
 	@NamedQuery(name = "Videojuego.findByTitle", query = "SELECT v FROM Videojuego v WHERE v.titulo = :titulo"),
-	@NamedQuery(name = "Videojuego.countAll", query = "SELECT COUNT(*) FROM Videojuego v")
+	@NamedQuery(name = "Videojuego.countAll", query = "SELECT COUNT(*) FROM Videojuego v"),
+	@NamedQuery(name = "Videojuego.findByCategory", query = "SELECT v FROM Videojuego v JOIN "
+			+ "Categoria c ON v.categoria.categoriaId = c.categoriaId AND c.categoriaId = :catId"),
+	@NamedQuery(name = "Videojuego.listNew", query = "SELECT v FROM Videojuego v ORDER BY v.fechaPublicacion DESC")
+
 })
 public class Videojuego implements java.io.Serializable {
 
