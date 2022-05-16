@@ -171,31 +171,60 @@ public class VideojuegoServices {
 	}
 
 	public void deleteVideogame() throws ServletException, IOException {
-	Integer videojuegoId = Integer.parseInt(request.getParameter("id"));
-		
+		Integer videojuegoId = Integer.parseInt(request.getParameter("id"));
+
 		videojuegoDAO.delete(videojuegoId);
-		
+
 		String message = "Videojuego eliminado con éxito.";
-		listarVideojuegos(message);	
-		
+		listarVideojuegos(message);
+
 	}
 
 	public void listVideogameByCategory() throws ServletException, IOException {
-		
+
 		int categoriaId = Integer.parseInt(request.getParameter("id"));
 		List<Videojuego> listaVidejuegos = videojuegoDAO.listarByCategoria(categoriaId);
 		Categoria categoria = categoriaDAO.get(categoriaId);
 		List<Categoria> listaCategoria = categoriaDAO.listAll();
-	
+
 		request.setAttribute("listaCategoria", listaCategoria);
 		request.setAttribute("listaVideojuegos", listaVidejuegos);
 		request.setAttribute("categoria", categoria);
-		
+
 		String listPage = "frontend/videogames_list_by_category.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(listPage);
-		requestDispatcher.forward(request, response);		
-		
-		
+		requestDispatcher.forward(request, response);
+
 	}
 
+	public void viewVideogameDetail() throws ServletException, IOException {
+
+		Integer videojuegoId = Integer.parseInt(request.getParameter("id"));
+		Videojuego videojuego = videojuegoDAO.get(videojuegoId);
+
+		request.setAttribute("videojuego", videojuego);
+
+		String detailPage = "frontend/videogame_detail.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(detailPage);
+		requestDispatcher.forward(request, response);
+	}
+
+	public void search() throws ServletException, IOException {
+		String keyword = request.getParameter("keyword");
+		List<Videojuego> result = null;
+
+		if (keyword.equals("")) {
+			result = videojuegoDAO.listAll();
+		} else {
+			result = videojuegoDAO.search(keyword);
+
+		}
+		
+		request.setAttribute("keyword", keyword);
+		request.setAttribute("result", result);
+		
+		String resultPage = "frontend/search_result.jsp";
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher(resultPage);
+		requestDispatcher.forward(request, response);	
+	}
 }

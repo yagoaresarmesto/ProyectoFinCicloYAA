@@ -60,6 +60,10 @@ public class VideojuegoDAO extends JpaDAO<Videojuego> implements GenericDAO<Vide
 		return super.findWithNamedQuery("Videojuego.findByCategory", "catId", categoriaId);
 
 	}
+	
+	public List<Videojuego> search(String keyword){
+		return super.findWithNamedQuery("Videojuego.search", "keyword", keyword);
+	}
 
 	public List<Videojuego> listNewVideojuegos() {
 

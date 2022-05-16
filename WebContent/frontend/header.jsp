@@ -9,7 +9,7 @@
 	</div>
 	<div class="contenedor-buscador">
 
-		<form action="" class="search-bar">
+		<form action="search" method="get" class="search-bar">
 			<input type="text" placeholder="Busca en LVCVSGAMES">
 			<button type="submit">
 				<i class="fa-solid fa-magnifying-glass"></i>

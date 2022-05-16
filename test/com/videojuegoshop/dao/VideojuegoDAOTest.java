@@ -163,45 +163,51 @@ public class VideojuegoDAOTest extends BaseDAOTest {
 	public void testFindByTitleNotExist() {
 		String titulo = "Hola";
 		Videojuego videojuego = videojuegoDao.findByTitle(titulo);
-		
+
 		assertNull(videojuego);
 	}
 
-	
 	@Test
 	public void testFindByTitleExist() {
 		String titulo = "Diablo2";
 		Videojuego videojuego = videojuegoDao.findByTitle(titulo);
-		
+
 		System.out.println(videojuego.getCompañia());
 		System.out.println(videojuego.getPrecio());
 		assertNotNull(videojuego);
 	}
-	
+
 	@Test
 	public void testCount() {
 		long totalVideojuegos = videojuegoDao.count();
-		
+
 		assertEquals(2, totalVideojuegos);
 	}
-	
+
 	@Test
 	public void testListNewVideogame() {
-	List<Videojuego> listaNuevosVideojuegos = videojuegoDao.listNewVideojuegos();
-	for(Videojuego aVideojuego : listaNuevosVideojuegos) {
-		System.out.println(aVideojuego.getTitulo() +" - "+ aVideojuego.getFechaPublicacion());
+		List<Videojuego> listaNuevosVideojuegos = videojuegoDao.listNewVideojuegos();
+		for (Videojuego aVideojuego : listaNuevosVideojuegos) {
+			System.out.println(aVideojuego.getTitulo() + " - " + aVideojuego.getFechaPublicacion());
+		}
+		assertEquals(4, listaNuevosVideojuegos.size());
 	}
-	assertEquals(4, listaNuevosVideojuegos.size());
-	}
-	
-	
+
 	@Test
-	public void listByCategory(){
+	public void testSearchVideogameInTitle() {
+		String keyword = "Diablo";
+		List<Videojuego> result = videojuegoDao.search(keyword);
+		
+		assertEquals(1, result.size());
+	}
+
+	@Test
+	public void listByCategory() {
 		int categoriaId = 4;
-		
+
 		List<Videojuego> listaVideojuegos = videojuegoDao.listarByCategoria(categoriaId);
-		
-		assertTrue(listaVideojuegos.size()>0);
-		
+
+		assertTrue(listaVideojuegos.size() > 0);
+
 	}
 }

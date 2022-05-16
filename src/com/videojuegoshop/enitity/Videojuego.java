@@ -37,8 +37,10 @@ import javax.persistence.UniqueConstraint;
 	@NamedQuery(name = "Videojuego.countAll", query = "SELECT COUNT(*) FROM Videojuego v"),
 	@NamedQuery(name = "Videojuego.findByCategory", query = "SELECT v FROM Videojuego v JOIN "
 			+ "Categoria c ON v.categoria.categoriaId = c.categoriaId AND c.categoriaId = :catId"),
-	@NamedQuery(name = "Videojuego.listNew", query = "SELECT v FROM Videojuego v ORDER BY v.fechaPublicacion DESC")
-
+	@NamedQuery(name = "Videojuego.listNew", query = "SELECT v FROM Videojuego v ORDER BY v.fechaPublicacion DESC"),
+	@NamedQuery(name = "Videojuego.search", query = "SELECT v FROM Videojuego v WHERE v.titulo LIKE '%' || :keyword || '%'"
+			+ " OR v.compañia LIKE '%' || :keyword || '%'"
+			+ " OR v.descripcion LIKE '%' || :keyword || '%'")
 })
 public class Videojuego implements java.io.Serializable {
 
