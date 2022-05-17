@@ -18,18 +18,17 @@ import com.videojuegoshop.enitity.Categoria;
 
 public class CategoriaServices {
 
-	private EntityManager entityManager;
 	private CategoriaDAO categoriaDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public CategoriaServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
+	public CategoriaServices(HttpServletRequest request, HttpServletResponse response) {
 		super();
 		this.request = request;
 		this.response = response;
-		this.entityManager = entityManager;
+		
 
-		categoriaDAO = new CategoriaDAO(entityManager);
+		categoriaDAO = new CategoriaDAO();
 	}
 
 	public void listCategory(String message) throws ServletException, IOException {

@@ -1,12 +1,13 @@
 package com.videojuegoshop.admin.videojuego;
 
-import com.videojuegoshop.controller.BaseServlet;
+
 import com.videojuegoshop.service.VideojuegoServices;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 		maxFileSize = 1024 * 300,		// 300 KB
 		maxRequestSize = 1024 * 1024	// 1 MB 
 		)
-public class UpdateVideogameServlet extends BaseServlet {
+public class UpdateVideogameServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	public UpdateVideogameServlet() {
@@ -26,7 +27,7 @@ public class UpdateVideogameServlet extends BaseServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		VideojuegoServices 	videojuegoServices = new VideojuegoServices(entityManager, request, response);
+		VideojuegoServices 	videojuegoServices = new VideojuegoServices(request, response);
 		videojuegoServices.updateVideogame();
 	}
 

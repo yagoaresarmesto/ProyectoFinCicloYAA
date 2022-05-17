@@ -23,19 +23,17 @@ import com.videojuegoshop.enitity.Videojuego;
 import antlr.LexerSharedInputState;
 
 public class VideojuegoServices {
-	private EntityManager entityManager;
 	private VideojuegoDAO videojuegoDAO;
 	private CategoriaDAO categoriaDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public VideojuegoServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
+	public VideojuegoServices (HttpServletRequest request, HttpServletResponse response) {
 		super();
-		this.entityManager = entityManager;
 		this.request = request;
 		this.response = response;
-		videojuegoDAO = new VideojuegoDAO(entityManager);
-		categoriaDAO = new CategoriaDAO(entityManager);
+		videojuegoDAO = new VideojuegoDAO();
+		categoriaDAO = new CategoriaDAO();
 	}
 
 	public void listarVideojuegos() throws ServletException, IOException {

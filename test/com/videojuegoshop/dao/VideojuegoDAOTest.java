@@ -20,19 +20,19 @@ import org.junit.Test;
 import com.videojuegoshop.enitity.Categoria;
 import com.videojuegoshop.enitity.Videojuego;
 
-public class VideojuegoDAOTest extends BaseDAOTest {
+public class VideojuegoDAOTest {
 
 	private static VideojuegoDAO videojuegoDao;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		BaseDAOTest.setUpBeforeClass();
-		videojuegoDao = new VideojuegoDAO(entityManager);
+
+		videojuegoDao = new VideojuegoDAO();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		BaseDAOTest.tearDownAfterClass();
+		videojuegoDao.close();
 	}
 
 	@Test
@@ -197,7 +197,7 @@ public class VideojuegoDAOTest extends BaseDAOTest {
 	public void testSearchVideogameInTitle() {
 		String keyword = "Diablo";
 		List<Videojuego> result = videojuegoDao.search(keyword);
-		
+
 		assertEquals(1, result.size());
 	}
 

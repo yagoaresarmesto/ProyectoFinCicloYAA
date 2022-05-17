@@ -11,13 +11,12 @@
 
 		<form action="search" method="get" class="search-bar">
 			<input type="text" placeholder="Busca en LVCVSGAMES">
-			<button type="submit">
+			<button type="submit" value="Search">
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</button>
-		</form>
+	</form>
 	</div>
-
-
+		
 	<div class="contenedor-botones-1">
 		<button type="submit">
 			<i class="fa-solid fa-arrow-right-to-bracket">&nbsp;</i>
@@ -44,13 +43,14 @@
 
 <div>
 	<c:forEach var="categoria" items="${listaCategoria }">
-		<a href="view_category?id=${categoria.categoriaId }"> <b></b> <c:out value="${categoria.nombre }" /> |
+		<a href="view_category?id=${categoria.categoriaId }"> <b></b> <c:out
+				value="${categoria.nombre }" /> |
 		</a>
 		<c:if test="${not status.last }">
 			&nbsp; | &nbsp;
 			</c:if>
 	</c:forEach>
-	&nbsp; 	&nbsp;
+	&nbsp; &nbsp;
 </div>
 
 

@@ -14,19 +14,19 @@ import org.junit.Test;
 
 import com.videojuegoshop.enitity.Categoria;
 
-public class CategoriaDAOTest extends BaseDAOTest {
+public class CategoriaDAOTest {
 
 	private static CategoriaDAO categoriaDao;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		BaseDAOTest.setUpBeforeClass();
-		categoriaDao = new CategoriaDAO(entityManager);
+
+		categoriaDao = new CategoriaDAO();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		BaseDAOTest.tearDownAfterClass();
+		categoriaDao.close();
 	}
 
 	@Test
@@ -67,34 +67,34 @@ public class CategoriaDAOTest extends BaseDAOTest {
 
 	@Test
 	public void testListAll() {
-	List<Categoria> listaCategoria = categoriaDao.listAll();
-	
-	assertTrue(listaCategoria.size() >0);
+		List<Categoria> listaCategoria = categoriaDao.listAll();
+
+		assertTrue(listaCategoria.size() > 0);
 	}
 
 	@Test
 	public void testCount() {
 		long totalCategoria = categoriaDao.count();
-		
-		assertEquals(6, totalCategoria);
-		
+
+		assertTrue(totalCategoria > 0);
+
 	}
-	
+
 	@Test
 	public void tesdtFindByName() {
 		String name = "Rpg";
-		
+
 		Categoria categoria = categoriaDao.findByName(name);
-		
+
 		assertNotNull(categoria);
 	}
 
 	@Test
 	public void tesdtFindByNameNotFound() {
 		String name = "Rpg12";
-		
+
 		Categoria categoria = categoriaDao.findByName(name);
-		
+
 		assertNull(categoria);
 	}
 

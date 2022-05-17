@@ -10,9 +10,7 @@ import com.videojuegoshop.enitity.Usuarios;
 
 public class UsuarioDAO extends JpaDAO<Usuarios> implements GenericDAO<Usuarios> {
 
-	public UsuarioDAO(EntityManager entityManager) {
-		super(entityManager);
-
+	public UsuarioDAO() {
 	}
 
 	public Usuarios create(Usuarios usuario) {

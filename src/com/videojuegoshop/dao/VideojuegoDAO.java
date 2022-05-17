@@ -10,9 +10,7 @@ import com.videojuegoshop.enitity.Videojuego;
 
 public class VideojuegoDAO extends JpaDAO<Videojuego> implements GenericDAO<Videojuego> {
 
-	public VideojuegoDAO(EntityManager entityManager) {
-		super(entityManager);
-
+	public VideojuegoDAO() {
 	}
 
 	@Override
@@ -66,11 +64,8 @@ public class VideojuegoDAO extends JpaDAO<Videojuego> implements GenericDAO<Vide
 	}
 
 	public List<Videojuego> listNewVideojuegos() {
-
-		Query query = entityManager.createNamedQuery("Videojuego.listNew");
-		query.setFirstResult(0);
-		query.setMaxResults(4);
-		return query.getResultList();
+		
+		return super.findWithNamedQuery("Videojuego.listNew", 0, 4);
 
 	}
 

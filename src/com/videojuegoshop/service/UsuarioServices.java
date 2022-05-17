@@ -16,16 +16,14 @@ import com.videojuegoshop.enitity.Usuarios;
 
 public class UsuarioServices {
 
-	private EntityManager entityManager;
 	private UsuarioDAO usuarioDAO;
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 
-	public UsuarioServices(EntityManager entityManager, HttpServletRequest request, HttpServletResponse response) {
+	public UsuarioServices(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
-		this.entityManager = entityManager;
-		usuarioDAO = new UsuarioDAO(entityManager);
+		usuarioDAO = new UsuarioDAO();
 	}
 
 	public void listUser() throws ServletException, IOException {

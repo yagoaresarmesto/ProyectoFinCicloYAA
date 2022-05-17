@@ -16,14 +16,14 @@ import org.junit.Test;
 
 import com.videojuegoshop.enitity.Usuarios;
 
-public class UsuarioDAOTest extends BaseDAOTest {
+public class UsuarioDAOTest{
 
 	private static UsuarioDAO usuarioDAO;
 
 	@BeforeClass
 	public static void setUpClass() throws Exception {
-		BaseDAOTest.setUpBeforeClass();
-		usuarioDAO = new UsuarioDAO(entityManager);
+	
+		usuarioDAO = new UsuarioDAO();
 	}
 
 	@Test
@@ -131,7 +131,7 @@ public class UsuarioDAOTest extends BaseDAOTest {
 	@Test
 	public void testCount() {
 		long totalUsuarios = usuarioDAO.count();
-		assertEquals(9, totalUsuarios);
+		assertTrue(totalUsuarios>0);
 
 	}
 
@@ -142,6 +142,11 @@ public class UsuarioDAOTest extends BaseDAOTest {
 
 		assertNotNull(usuario);
 
+	}
+	
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception{
+		usuarioDAO.close();
 	}
 
 }

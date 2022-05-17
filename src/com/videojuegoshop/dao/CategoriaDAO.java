@@ -8,9 +8,7 @@ import com.videojuegoshop.enitity.Categoria;
 
 public class CategoriaDAO extends JpaDAO<Categoria> implements GenericDAO<Categoria> {
 
-	public CategoriaDAO(EntityManager entityManager) {
-		super(entityManager);
-
+	public CategoriaDAO() {
 	}
 
 	@Override
