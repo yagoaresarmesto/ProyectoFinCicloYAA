@@ -1,11 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header class="header">
 	<div class="contenedor-logo">
-
-		<img
+		<a href="${pageContext.request.contextPath}/"> <img
 			src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
 			width="120" height="80">
-
+		</a>
 	</div>
 	<div class="contenedor-buscador">
 
@@ -14,9 +13,9 @@
 			<button type="submit" value="Search">
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</button>
-	</form>
+		</form>
 	</div>
-		
+
 	<div class="contenedor-botones-1">
 		<button type="submit">
 			<i class="fa-solid fa-arrow-right-to-bracket">&nbsp;</i>

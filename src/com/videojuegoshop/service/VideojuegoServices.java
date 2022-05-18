@@ -183,9 +183,7 @@ public class VideojuegoServices {
 		int categoriaId = Integer.parseInt(request.getParameter("id"));
 		List<Videojuego> listaVidejuegos = videojuegoDAO.listarByCategoria(categoriaId);
 		Categoria categoria = categoriaDAO.get(categoriaId);
-		List<Categoria> listaCategoria = categoriaDAO.listAll();
-
-		request.setAttribute("listaCategoria", listaCategoria);
+		
 		request.setAttribute("listaVideojuegos", listaVidejuegos);
 		request.setAttribute("categoria", categoria);
 

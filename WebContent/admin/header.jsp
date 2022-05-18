@@ -1,9 +1,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header class="header-admin">
 	<div class="contenedor-logo-admin">
-		<img
+		<a href="${pageContext.request.contextPath}/admin/"> <img
 			src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
 			width="120" height="80">
+		</a>
 	</div>
 	<div class="contenedor-titulo-admin">
 	PANEL DE ADMINISTRACIÓN

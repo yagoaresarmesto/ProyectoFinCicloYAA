@@ -58,13 +58,13 @@ public class VideojuegoDAO extends JpaDAO<Videojuego> implements GenericDAO<Vide
 		return super.findWithNamedQuery("Videojuego.findByCategory", "catId", categoriaId);
 
 	}
-	
-	public List<Videojuego> search(String keyword){
+
+	public List<Videojuego> search(String keyword) {
 		return super.findWithNamedQuery("Videojuego.search", "keyword", keyword);
 	}
 
 	public List<Videojuego> listNewVideojuegos() {
-		
+
 		return super.findWithNamedQuery("Videojuego.listNew", 0, 4);
 
 	}
@@ -74,4 +74,7 @@ public class VideojuegoDAO extends JpaDAO<Videojuego> implements GenericDAO<Vide
 		return super.countWithNamedQuery("Videojuego.countAll");
 	}
 
+	public long countByCategory(int categoriaId) {
+		return super.countWithNamedQuery("Videojuego.countByCategory", "catId", categoriaId);
+	}
 }

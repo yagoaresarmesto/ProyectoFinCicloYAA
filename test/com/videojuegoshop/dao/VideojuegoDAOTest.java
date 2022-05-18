@@ -210,4 +210,12 @@ public class VideojuegoDAOTest {
 		assertTrue(listaVideojuegos.size() > 0);
 
 	}
+	
+	@Test 
+	public void testCountByCategory(){
+		int categoriaId = 4;
+		long numofVideogames = videojuegoDao.countByCategory(categoriaId);
+		
+		assertTrue(numofVideogames == 1 );
+	}
 }

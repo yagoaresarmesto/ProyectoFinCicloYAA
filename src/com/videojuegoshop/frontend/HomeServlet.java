@@ -26,16 +26,11 @@ public class HomeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		CategoriaDAO categoriaDAO = new CategoriaDAO();
+
 		VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
 		
-		
-		List<Categoria> listaCategoria = categoriaDAO.listAll();
 		List<Videojuego> listaNuevosVideojuegos = videojuegoDAO.listNewVideojuegos();
 		
-		
-		
-		request.setAttribute("listaCategoria", listaCategoria);
         request.setAttribute("listaNuevosVideojuegos", listaNuevosVideojuegos);
 		
 		String homepage = "frontend/index.jsp"; // Redirección a la homePage

@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.hibernate.boot.archive.scan.spi.ClassDescriptor.Categorization;
 
 import com.videojuegoshop.dao.CategoriaDAO;
+import com.videojuegoshop.dao.VideojuegoDAO;
 import com.videojuegoshop.enitity.Categoria;
 
 public class CategoriaServices {
@@ -104,8 +105,18 @@ public class CategoriaServices {
 	public void deleteCategory() throws ServletException, IOException {
 		
 		int categoriaId = Integer.parseInt(request.getParameter("id"));
-		categoriaDAO.delete(categoriaId);
-		String message = "La categoria con ID" + categoriaId + " ha sido eliminada con éxito";
+		VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
+		long numberOfVidejuegos = videojuegoDAO.countByCategory(categoriaId);
+		String message;
+		
+		if (numberOfVidejuegos > 0) {
+			message = "No se puedo borrar la categoria con (ID: %d) porque contiene videojuegos.";
+			message = String.format(message, numberOfVidejuegos);
+		} else {
+			categoriaDAO.delete(categoriaId);		
+			message = "La categoria con ID " + categoriaId + " se ha eliminado con éxito.";
+		}
+		
 		listCategory(message);
 
 	}
