@@ -1,4 +1,5 @@
-package com.videojuegoshop.frontend;
+package com.videojuegoshop.frontend.videojuego;
+
 
 import com.videojuegoshop.service.VideojuegoServices;
 
@@ -9,20 +10,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/view_videogame")
-public class ViewVideojuegoServlet extends HttpServlet{
+@WebServlet("/view_category")
+public class ViewVideogamesByCategoryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public ViewVideojuegoServlet() {
+	public ViewVideogamesByCategoryServlet() {
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		VideojuegoServices videojuegoServices = new VideojuegoServices(request, response);
-		
-		videojuegoServices.viewVideogameDetail();
+		VideojuegoServices videojuegoServices = new VideojuegoServices( request, response);
+		videojuegoServices.listVideogameByCategory();
 	}
 
 }

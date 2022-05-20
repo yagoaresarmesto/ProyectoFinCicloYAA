@@ -9,6 +9,8 @@
 <title>Manejar Clientes</title>
 <link rel="stylesheet" href="../css/estilos.css">
 <script src="https://kit.fontawesome.com/f5b5688fc0.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js"></script>
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
@@ -70,15 +72,15 @@
 														.on(
 																"click",
 																function() {
-																	videojuegoId = $(
+																	clienteId = $(
 																			this)
 																			.attr(
 																					"id");
-																	if (confirm('¿Quiere eliminar este videojuego con ID '
-																			+ videojuegoId
+																	if (confirm('¿Quiere eliminar este cliente con ID '
+																			+ clienteId
 																			+ ' ?')) {
-																		window.location = 'delete_videogame?id='
-																				+ videojuegoId;
+																		window.location = 'delete_customer?id='
+																				+ clienteId;
 																	}
 																});
 											});

@@ -17,17 +17,19 @@
 	</div>
 
 	<div class="contenedor-botones-1">
+		<a href="login">
 		<button type="submit">
 			<i class="fa-solid fa-arrow-right-to-bracket">&nbsp;</i>
 		</button>
+			</a>
 	</div>
 
 	<div class="contenedor-botones-2">
-
-		<button type="submit">
-			<i class="fa-solid fa-user"></i></i>&nbsp;
-		</button>
-
+		<a href="register">
+			<button>
+				<i class="fa-solid fa-user"></i></i>&nbsp;
+			</button>
+		</a>
 	</div>
 	<div class="contenedor-botones-3">
 
