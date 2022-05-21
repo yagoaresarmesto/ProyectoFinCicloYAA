@@ -1,7 +1,9 @@
 package com.videojuegoshop.dao;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.videojuegoshop.enitity.Cliente;
 
@@ -44,4 +46,20 @@ public class ClienteDAO extends JpaDAO<Cliente> implements GenericDAO<Cliente> {
 		return null;
 	}
 
+	public Cliente checkLogin(String email, String password) {
+		
+		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("email", email);
+		parameters.put("pass", password);
+		
+		List<Cliente> resultado = super.findWithNamedQuery("Cliente.checkLogin", parameters);
+		
+		
+		if(!resultado.isEmpty()) {
+			return resultado.get(0);
+		}
+		
+		return null;
+		
+	}
 }

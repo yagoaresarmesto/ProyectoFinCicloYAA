@@ -41,6 +41,7 @@ public class ClienteServices {
 	public void listClientes() throws ServletException, IOException {
 		listClientes(null);
 	}
+
 	private void updateClienteFiledsFromForm(Cliente cliente) {
 		String email = request.getParameter("email");
 		String nombreCompleto = request.getParameter("nombreCompleto");
@@ -51,7 +52,6 @@ public class ClienteServices {
 		String codigoPostal = request.getParameter("codigoPostal");
 		String pais = request.getParameter("pais");
 
-		
 		cliente.setEmail(email);
 		cliente.setNombrecompleto(nombreCompleto);
 		cliente.setContraseña(contraseña);
@@ -100,12 +100,10 @@ public class ClienteServices {
 			updateClienteFiledsFromForm(newCliente);
 			clienteDAO.create(newCliente);
 
-
-			message = "Te has registrado con éxito!<br/>"
-					+"<a href='login'>Click aquí </a> para loguearse";
+			message = "Te has registrado con éxito!<br/>" + "<a href='login'>Click aquí </a> para loguearse";
 
 		}
-		
+
 		String messagePage = "frontend/message.jsp";
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(messagePage);
 		request.setAttribute("message", message);
@@ -143,7 +141,7 @@ public class ClienteServices {
 			Cliente clienteById = clienteDAO.get(clienteId);
 			updateClienteFiledsFromForm(clienteById);
 			clienteDAO.update(clienteById);
-	
+
 			message = "El cliente ha sido actualizado con éxito";
 		}
 
@@ -159,5 +157,35 @@ public class ClienteServices {
 		String message = "Cliente eliminado con éxito.";
 		listClientes(message);
 
+	}
+
+	public void showLogin() throws ServletException, IOException {
+
+		String loginPage = "frontend/login.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(loginPage);
+		dispatcher.forward(request, response);
+	}
+
+	public void doLogin() throws ServletException, IOException {
+		String email = request.getParameter("email");
+		String password = request.getParameter("contraseña");
+
+		Cliente cliente = clienteDAO.checkLogin(email, password);
+
+		if (cliente == null) {
+			String message = "Login fallido. Porfavor comprueba tu correo o contraseña";
+			request.setAttribute("message", message);
+			showLogin();
+
+		} else {
+			request.getSession().setAttribute("loggedCustomer", cliente);
+			showClienteProfile();
+		}
+	}
+	
+	public void showClienteProfile() throws ServletException, IOException {
+		String profilePage = "frontend/customer_profile.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
+		dispatcher.forward(request, response);
 	}
 }

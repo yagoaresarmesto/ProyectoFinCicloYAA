@@ -25,6 +25,7 @@ import javax.persistence.NamedQueries;
 @NamedQuery(name = "Cliente.findAll", query = "SELECT c FROM Cliente c ORDER BY c.email DESC"),
 @NamedQuery(name = "Cliente.findByEmail", query = "SELECT c FROM Cliente c WHERE c.email = :email"),
 @NamedQuery(name = "Cliente.countAll", query = "SELECT COUNT(c.email) FROM Cliente c"),
+@NamedQuery(name = "Cliente.checkLogin", query = "SELECT c FROM Cliente c WHERE c.email = :email AND c.contraseña = :pass")
 })
 public class Cliente implements java.io.Serializable {
 
