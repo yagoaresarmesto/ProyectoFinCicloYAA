@@ -52,9 +52,15 @@ public class ClienteServices {
 		String codigoPostal = request.getParameter("codigoPostal");
 		String pais = request.getParameter("pais");
 
-		cliente.setEmail(email);
+		if(email != null && !email.equals("")) {
+			cliente.setEmail(email);
+		}
+	
 		cliente.setNombrecompleto(nombreCompleto);
+		if(contraseña != null && !contraseña.equals("")) {
 		cliente.setContraseña(contraseña);
+		}
+		
 		cliente.setTelefono(telefono);
 		cliente.setDireccion(direccion);
 		cliente.setCiudad(ciudad);
@@ -182,10 +188,26 @@ public class ClienteServices {
 			showClienteProfile();
 		}
 	}
-	
+
 	public void showClienteProfile() throws ServletException, IOException {
 		String profilePage = "frontend/customer_profile.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(profilePage);
 		dispatcher.forward(request, response);
+	}
+
+	public void showClienteProfileEditForm() throws ServletException, IOException {
+		String editPage = "frontend/edit_profile.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
+		dispatcher.forward(request, response);
+	}
+
+	public void updateClienteProfile() throws ServletException, IOException {
+
+		Cliente cliente = (Cliente) request.getSession().getAttribute("loggedCustomer");
+		updateClienteFiledsFromForm(cliente);
+		clienteDAO.update(cliente);
+		
+		showClienteProfile();
+		
 	}
 }

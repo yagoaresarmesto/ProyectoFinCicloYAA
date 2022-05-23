@@ -23,7 +23,7 @@
 
 <div align="center">
 	<b> <a href="list_usuarios">Usuarios</a> | <a href="list_category">Categorias</a>
-		| <a href="list_videojuegos">Videojuegos</a> | <a href="list_customer">Clientes</a> | <a href="">Reviews</a>
+		| <a href="list_videojuegos">Videojuegos</a> | <a href="list_customer">Clientes</a> | <a href="list_review">Reviews</a>
 		| <a href="">Pedidos</a> |
 	</b>
 </div>

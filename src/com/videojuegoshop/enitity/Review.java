@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.NamedQueries;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +23,10 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "review", catalog = "videogameshopyaa")
+@NamedQueries({
+	@NamedQuery(name = "Review.listAll", query = "SELECT r FROM Review r"),
+	@NamedQuery(name = "Review.countAll", query = "SELECT COUNT(r) FROM Review r")
+})
 public class Review implements java.io.Serializable {
 
 	private Integer reviewId;
@@ -56,14 +62,16 @@ public class Review implements java.io.Serializable {
 	}
 
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "cliente_id", nullable = false)
 	public Cliente getCliente() {
 		return this.cliente;
 	}
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "cliente_id", nullable = false)
+	
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "videojuego_id", nullable = false)
 	public Videojuego getVideojuego() {
