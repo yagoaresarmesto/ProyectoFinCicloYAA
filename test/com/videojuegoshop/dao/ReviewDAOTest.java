@@ -34,7 +34,7 @@ public class ReviewDAOTest {
 
 		Review review = new Review();
 		Videojuego videojuego = new Videojuego();
-		videojuego.setVideojuegoId(10);
+		videojuego.setVideojuegoId(11);
 
 		Cliente cliente = new Cliente();
 		cliente.setClienteId(5);
@@ -43,7 +43,7 @@ public class ReviewDAOTest {
 		review.setCliente(cliente);
 
 		review.setEncabezado("Esta entretenido");
-		review.setClasificacion(4);
+		review.setClasificacion(3);
 		review.setComentario("Para pasar el rato con los colegas");
 
 		Review guardadaReview = reviewDao.create(review);
@@ -94,5 +94,26 @@ public class ReviewDAOTest {
 		System.out.println("Review totales: " + totalReviews);
 		assertTrue(totalReviews > 0);
 	}
+	
+	@Test
+	public void testFindByCustomerAndVideogameNotFound() {
+		Integer clienteId = 100;
+		Integer videojuegoId = 99;
+		
+		Review result = reviewDao.findByCustomerAndBook(clienteId, videojuegoId);
+		
+		assertNull(result);
+	}
+	
+	@Test
+	public void testFindByCustomerAndVideogameFound() {
+		Integer clienteId = 4;
+		Integer videojuegoId = 9;
+		
+		Review result = reviewDao.findByCustomerAndBook(clienteId, videojuegoId);
+		
+		assertNotNull(result);
+	}
+	
 
 }

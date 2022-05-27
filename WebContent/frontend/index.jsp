@@ -33,8 +33,8 @@
 							${videojuego.titulo } </a>
 					</div>
 
-
-					<div>Valoración *****</div>
+					<jsp:directive.include file="videogame_rating.jsp" />
+					<div></div>
 					<div>${videojuego.compañia }</div>
 					<div>${videojuego.precio }</div>
 				</div>
@@ -45,8 +45,8 @@
 			<h2>Más vendidos</h2>
 		</div>
 		<div align="center" style="clear: both">
-		<h2>Favoritos</h2>
-			</div>
+			<h2>Favoritos</h2>
+		</div>
 	</div>
 
 	<br>

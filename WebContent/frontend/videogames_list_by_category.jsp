@@ -19,7 +19,7 @@
 		<h2>${categoria.nombre}</h2>
 	</div>
 
-	<div align="center" style= "width: 80% margin: 0 auto">
+	<div align="center" style="width: 80% margin: 0 auto">
 
 		<c:forEach items="${listaVideojuegos }" var="videojuego">
 			<div style="float: left; display: inline-block; margin: 10px;">
@@ -32,7 +32,10 @@
 					<a href="view_videogame?id=${videojuego.videojuegoId }">
 						${videojuego.titulo } </a>
 				</div>
-				<div>Valoración *****</div>
+				<div>
+					<jsp:directive.include file="videogame_rating.jsp" />
+				
+				</div>
 				<div>${videojuego.compañia }</div>
 				<div>${videojuego.precio }</div>
 			</div>

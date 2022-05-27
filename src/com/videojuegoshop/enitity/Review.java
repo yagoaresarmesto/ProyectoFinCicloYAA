@@ -25,7 +25,10 @@ import javax.persistence.Transient;
 @Table(name = "review", catalog = "videogameshopyaa")
 @NamedQueries({
 	@NamedQuery(name = "Review.listAll", query = "SELECT r FROM Review r"),
-	@NamedQuery(name = "Review.countAll", query = "SELECT COUNT(r) FROM Review r")
+	@NamedQuery(name = "Review.countAll", query = "SELECT COUNT(r) FROM Review r"),
+	@NamedQuery(name = "Review.findByCustomerAndVideogame", 
+	query = "SELECT r FROM Review r WHERE r.cliente.clienteId =:clienteId"
+			+ " AND r.videojuego.videojuegoId =:videojuegoId"),
 })
 public class Review implements java.io.Serializable {
 

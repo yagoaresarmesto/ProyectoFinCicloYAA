@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.videojuegoshop.dao.ClienteDAO;
 import com.videojuegoshop.enitity.Cliente;
@@ -52,15 +53,15 @@ public class ClienteServices {
 		String codigoPostal = request.getParameter("codigoPostal");
 		String pais = request.getParameter("pais");
 
-		if(email != null && !email.equals("")) {
+		if (email != null && !email.equals("")) {
 			cliente.setEmail(email);
 		}
-	
+
 		cliente.setNombrecompleto(nombreCompleto);
-		if(contraseña != null && !contraseña.equals("")) {
-		cliente.setContraseña(contraseña);
+		if (contraseña != null && !contraseña.equals("")) {
+			cliente.setContraseña(contraseña);
 		}
-		
+
 		cliente.setTelefono(telefono);
 		cliente.setDireccion(direccion);
 		cliente.setCiudad(ciudad);
@@ -184,8 +185,18 @@ public class ClienteServices {
 			showLogin();
 
 		} else {
-			request.getSession().setAttribute("loggedCustomer", cliente);
-			showClienteProfile();
+			HttpSession session = request.getSession();
+			session.setAttribute("loggedCustomer", cliente);
+
+			Object objRedirectURL = session.getAttribute("redirectURL");
+
+			if (objRedirectURL != null) {
+				String redirectURL = (String) objRedirectURL;
+				session.removeAttribute("redirectURL");
+				response.sendRedirect(redirectURL);
+			} else {
+				showClienteProfile();
+			}
 		}
 	}
 
@@ -206,8 +217,8 @@ public class ClienteServices {
 		Cliente cliente = (Cliente) request.getSession().getAttribute("loggedCustomer");
 		updateClienteFiledsFromForm(cliente);
 		clienteDAO.update(cliente);
-		
+
 		showClienteProfile();
-		
+
 	}
 }

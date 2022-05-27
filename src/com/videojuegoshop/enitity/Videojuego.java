@@ -1,11 +1,11 @@
 package com.videojuegoshop.enitity;
 
 import java.util.Base64;
-
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
+import java.util.TreeSet;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,19 +31,16 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "videojuego", catalog = "videogameshopyaa", uniqueConstraints = @UniqueConstraint(columnNames = {
 		"titulo" }))
-@NamedQueries({
-	@NamedQuery(name = "Videojuego.findAll", query = "SELECT v FROM Videojuego v"),
-	@NamedQuery(name = "Videojuego.findByTitle", query = "SELECT v FROM Videojuego v WHERE v.titulo = :titulo"),
-	@NamedQuery(name = "Videojuego.countAll", query = "SELECT COUNT(*) FROM Videojuego v"),
-	@NamedQuery(name = "Videojuego.countByCategory", query = "SELECT COUNT(v) FROM Videojuego v "
-			+ "WHERE v.categoria.categoriaId = :catId"),
-	@NamedQuery(name = "Videojuego.findByCategory", query = "SELECT v FROM Videojuego v JOIN "
-			+ "Categoria c ON v.categoria.categoriaId = c.categoriaId AND c.categoriaId = :catId"),
-	@NamedQuery(name = "Videojuego.listNew", query = "SELECT v FROM Videojuego v ORDER BY v.fechaPublicacion DESC"),
-	@NamedQuery(name = "Videojuego.search", query = "SELECT v FROM Videojuego v WHERE v.titulo LIKE '%' || :keyword || '%'"
-			+ " OR v.compañia LIKE '%' || :keyword || '%'"
-			+ " OR v.descripcion LIKE '%' || :keyword || '%'")
-})
+@NamedQueries({ @NamedQuery(name = "Videojuego.findAll", query = "SELECT v FROM Videojuego v"),
+		@NamedQuery(name = "Videojuego.findByTitle", query = "SELECT v FROM Videojuego v WHERE v.titulo = :titulo"),
+		@NamedQuery(name = "Videojuego.countAll", query = "SELECT COUNT(*) FROM Videojuego v"),
+		@NamedQuery(name = "Videojuego.countByCategory", query = "SELECT COUNT(v) FROM Videojuego v "
+				+ "WHERE v.categoria.categoriaId = :catId"),
+		@NamedQuery(name = "Videojuego.findByCategory", query = "SELECT v FROM Videojuego v JOIN "
+				+ "Categoria c ON v.categoria.categoriaId = c.categoriaId AND c.categoriaId = :catId"),
+		@NamedQuery(name = "Videojuego.listNew", query = "SELECT v FROM Videojuego v ORDER BY v.fechaPublicacion DESC"),
+		@NamedQuery(name = "Videojuego.search", query = "SELECT v FROM Videojuego v WHERE v.titulo LIKE '%' || :keyword || '%'"
+				+ " OR v.compañia LIKE '%' || :keyword || '%'" + " OR v.descripcion LIKE '%' || :keyword || '%'") })
 public class Videojuego implements java.io.Serializable {
 
 	private Integer videojuegoId;
@@ -174,6 +171,7 @@ public class Videojuego implements java.io.Serializable {
 	public void setFechaActualizacion(Date fechaActualizacion) {
 		this.fechaActualizacion = fechaActualizacion;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "videojuego")
 	public Set<DetallesPedido> getDetallesPedidos() {
 		return this.detallesPedidos;
@@ -182,13 +180,32 @@ public class Videojuego implements java.io.Serializable {
 	public void setDetallesPedidos(Set<DetallesPedido> detallesPedidos) {
 		this.detallesPedidos = detallesPedidos;
 	}
-	
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "videojuego")
+	public Set<Review> getReviews() {
+		TreeSet<Review> sortedReviews = new TreeSet<>(new Comparator<Review>() {
+
+			@Override
+			public int compare(Review review1, Review review2) {
+				return review2.getReviewFecha().compareTo(review1.getReviewFecha());
+			}
+
+		});
+
+		sortedReviews.addAll(reviews);
+		return sortedReviews;
+	}
+
+	public void setReviews(Set<Review> reviews) {
+		this.reviews = reviews;
+	}
+
 	@Transient
 	public String getBase64Image() {
 		this.base64Image = Base64.getEncoder().encodeToString(this.imagen);
 		return this.base64Image;
 	}
-	
+
 	@Transient
 	public void setBase64Image(String base64Image) {
 		this.base64Image = base64Image;
@@ -198,20 +215,20 @@ public class Videojuego implements java.io.Serializable {
 	public float getAverageRating() {
 		float averageRating = 0.0f;
 		float sum = 0.0f;
-		
+
 		if (reviews.isEmpty()) {
 			return 0.0f;
 		}
-		
+
 		for (Review review : reviews) {
 			sum += review.getClasificacion();
 		}
-		
+
 		averageRating = sum / reviews.size();
-		
+
 		return averageRating;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -236,8 +253,37 @@ public class Videojuego implements java.io.Serializable {
 			return false;
 		return true;
 	}
-
+	
+	@Transient
+	public String getRatingStars() {
+		float averageRating = getAverageRating();
+		
+		return getRatingString(averageRating);
+	}
 	
 
+	@Transient
+	public String getRatingString(float averageRating) {
+		String result = "";
+
+		int numberOfStarsOn = (int) averageRating;
+
+		for (int i = 1; i <= numberOfStarsOn; i++) {
+			result += "on,";
+		}
+
+		int next = numberOfStarsOn + 1;
+
+		if (averageRating > numberOfStarsOn) {
+			result += "half,";
+			next++;
+		}
+
+		for (int j = next; j <= 5; j++) {
+			result += "off,";
+		}
+
+		return result.substring(0, result.length() - 1);
+	}
 
 }

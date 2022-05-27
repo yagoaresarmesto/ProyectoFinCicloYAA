@@ -7,9 +7,13 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.videojuegoshop.dao.ReviewDAO;
+import com.videojuegoshop.dao.VideojuegoDAO;
+import com.videojuegoshop.enitity.Cliente;
 import com.videojuegoshop.enitity.Review;
+import com.videojuegoshop.enitity.Videojuego;
 
 public class ReviewServices {
 
@@ -77,11 +81,63 @@ public class ReviewServices {
 	public void deleteReview() throws ServletException, IOException {
 		Integer reviewId = Integer.parseInt(request.getParameter("id"));
 		reviewDAO.delete(reviewId);
-		
+
 		String message = "La review ha sido eliminada con éxito.";
-		
+
 		listAllReview(message);
-		
+
+	}
+
+	public void showReviewForm() throws ServletException, IOException {
+		Integer videojuegoId = Integer.parseInt(request.getParameter("videogame_id"));
+		VideojuegoDAO videojuegoDao = new VideojuegoDAO();
+		Videojuego videojuego = videojuegoDao.get(videojuegoId);
+
+		HttpSession session = request.getSession();
+
+		Cliente cliente = (Cliente) session.getAttribute("loggedCustomer");
+
+		Review existReview = reviewDAO.findByCustomerAndBook(cliente.getClienteId(), videojuegoId);
+
+		session.setAttribute("videojuego", videojuego);
+
+		String targetPage = "frontend/review_form.jsp";
+
+		if (existReview != null) {
+			request.setAttribute("review", existReview);
+			targetPage = "frontend/review_info.jsp";
+		}
+
+		RequestDispatcher dispatcher = request.getRequestDispatcher(targetPage);
+		dispatcher.forward(request, response);
+
+	}
+
+	public void submitReview() throws ServletException, IOException {
+		Integer videojuegoId = Integer.parseInt(request.getParameter("videojuegoId"));
+		Integer clasificacion = Integer.parseInt(request.getParameter("rating"));
+		String encabezado = request.getParameter("encabezado");
+		String comentario = request.getParameter("comentario");
+
+		Review nuevaReview = new Review();
+		nuevaReview.setEncabezado(encabezado);
+		nuevaReview.setComentario(comentario);
+		nuevaReview.setClasificacion(clasificacion);
+
+		Videojuego videojuego = new Videojuego();
+		videojuego.setVideojuegoId(videojuegoId);
+		;
+		nuevaReview.setVideojuego(videojuego);
+
+		Cliente cliente = (Cliente) request.getSession().getAttribute("loggedCustomer");
+		nuevaReview.setCliente(cliente);
+
+		reviewDAO.create(nuevaReview);
+
+		String messagePage = "frontend/review_done.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(messagePage);
+		dispatcher.forward(request, response);
+
 	}
 
 }
