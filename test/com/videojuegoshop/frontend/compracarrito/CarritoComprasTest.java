@@ -78,5 +78,21 @@ public class CarritoComprasTest {
 		assertEquals(0, carrito.getTotalQuantity());
 	}
 	
-
+	
+	@Test
+	public void testUpdateCart() {
+		CarritoCompras carrito = new CarritoCompras();
+		Videojuego videojuego1= new Videojuego(1);
+		Videojuego videojuego2= new Videojuego(2);
+		
+		carrito.addItem(videojuego1);
+		carrito.addItem(videojuego2);
+		
+		int[] videojuegosIds = {1,2};
+		int[] cantidades = {3,4};
+		
+		carrito.updateCart(videojuegosIds, cantidades);
+		
+		assertEquals(7, carrito.getTotalQuantity());
+	}
 }

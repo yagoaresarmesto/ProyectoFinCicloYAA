@@ -15,38 +15,40 @@
 			</button>
 		</form>
 	</div>
-  <c:if test="${loggedCustomer==null}">
-	<div class="contenedor-botones-1">
-		<a href="login">
-		<button type="submit">
-			<i class="fa-solid fa-arrow-right-to-bracket">&nbsp;</i>
-		</button>
+	<c:if test="${loggedCustomer==null}">
+		<div class="contenedor-botones-1">
+			<a href="login">
+				<button type="submit">
+					<i class="fa-solid fa-arrow-right-to-bracket">&nbsp;</i>
+				</button>
 			</a>
-	</div>
+		</div>
 
-	<div class="contenedor-botones-2">
-		<a href="register">
-			<button>
-				<i class="fa-solid fa-user"></i></i>&nbsp;
+		<div class="contenedor-botones-2">
+			<a href="register">
+				<button>
+					<i class="fa-solid fa-user"></i></i>&nbsp;
+				</button>
+			</a>
+		</div>
+	</c:if>
+
+	<c:if test="${loggedCustomer!=null}">
+		<a href="view_profile">Bienvenido, ${loggedCustomer.nombrecompleto }
+		</a>
+		<a href="view_orders"> VP</a>
+		<a href="logout"> CS</a>
+		<a href="view_cart"> Carrito</a>
+	</c:if>
+
+	<div class="contenedor-botones-3">
+		<a href="view_cart">
+			<button type="submit">
+
+				<i class="fa-solid fa-cart-shopping"></i>
+
 			</button>
 		</a>
-	</div>
-	</c:if>
-	
-  <c:if test="${loggedCustomer!=null}">
-  <a href="view_profile">Bienvenido, ${loggedCustomer.nombrecompleto } </a>
-  <a href="view_orders"> Ver pedidos</a>
-  <a href="logout"> Cerrar Sesión</a>
-
-  </c:if>
-  
-	<div class="contenedor-botones-3">
-
-		<button type="submit">
-
-			<i class="fa-solid fa-cart-shopping"></i>
-
-		</button>
 	</div>
 </header>
 

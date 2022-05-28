@@ -5,9 +5,9 @@ import java.util.Iterator;
 import java.util.Map;
 
 import com.videojuegoshop.enitity.Videojuego;
-class CarritoCompras {
 
-	
+public class CarritoCompras {
+
 	private Map<Videojuego, Integer> carrito = new HashMap<>();
 	
 	public void addItem(Videojuego videojuego) {
@@ -52,10 +52,22 @@ class CarritoCompras {
 		return total;
 	}
 	
+	public void updateCart(int[] videojuegoIds, int[] quantities) {
+		for (int i = 0; i < videojuegoIds.length; i++) {
+			Videojuego key = new Videojuego(videojuegoIds[i]);
+			Integer value = quantities[i];
+			carrito.put(key, value);
+		}
+	}
+	
+	
 	public void clear() {
 		carrito.clear();
 	}
 	
+	public int getTotalItems() {
+		return carrito.size();
+	}
 	
 	public Map<Videojuego, Integer> getItems() {
 		return this.carrito;

@@ -290,5 +290,9 @@ public class Videojuego implements java.io.Serializable {
 
 		return result.substring(0, result.length() - 1);
 	}
+	
+
+
+
 
 }

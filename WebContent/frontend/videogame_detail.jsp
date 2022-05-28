@@ -34,7 +34,7 @@
 
 				<td valign="top" rowspan="2" width="20%">
 					<h2>$${videojuego.precio}</h2> <br />
-					<button type="submit">Añadir al carrito</button>
+					<button id ="buttonAddToCart">Añadir al carrito</button>
 				</td>
 			</tr>
 			<tr>
@@ -89,6 +89,10 @@
 			$("#buttonWriteReview").click(function() {
 				window.location = 'write_review?videogame_id=' + ${videojuego.videojuegoId};
 			});
+			
+			$("#buttonAddToCart").click(function() {
+				window.location = 'add_to_cart?videogame_id=' + ${videojuego.videojuegoId};
+			});				
 		});
 	</script>
 </body>
