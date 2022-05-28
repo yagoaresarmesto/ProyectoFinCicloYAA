@@ -58,6 +58,11 @@ public class Videojuego implements java.io.Serializable {
 
 	public Videojuego() {
 	}
+	
+	public Videojuego(Integer videojuegoId) {
+		super();
+		this.videojuegoId = videojuegoId;
+	}
 
 	public Videojuego(Categoria categoria, String titulo, String compañia, String descripcion, byte[] imagen,
 			float precio, Date fechaPublicacion, Date fechaActualizacion) {
