@@ -13,7 +13,7 @@
 			<button type="submit" value="Search">
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</button>
-		</form>
+	    </form>
 	</div>
 	<c:if test="${loggedCustomer==null}">
 		<div class="contenedor-botones-1">
@@ -38,8 +38,12 @@
 		</a>
 		<a href="view_orders"> VP</a>
 		<a href="logout"> CS</a>
-		<a href="view_cart"> Carrito</a>
+	
 	</c:if>
+
+
+
+	
 
 	<div class="contenedor-botones-3">
 		<a href="view_cart">

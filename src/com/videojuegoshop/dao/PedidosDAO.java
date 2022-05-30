@@ -11,8 +11,7 @@ public class PedidosDAO extends JpaDAO<VideojuegoPedido> implements GenericDAO<V
 	public VideojuegoPedido create(VideojuegoPedido pedido) {
 
 		pedido.setFechaPedido(new Date());
-		pedido.setMetodoPago("Tarjeta de crédito");
-		pedido.setEstadoPedido("Proccessing");
+		pedido.setEstadoPedido("En Proceso");
 
 		return super.create(pedido);
 	}
@@ -42,6 +41,11 @@ public class PedidosDAO extends JpaDAO<VideojuegoPedido> implements GenericDAO<V
 	@Override
 	public long count() {
 		return super.countWithNamedQuery("VideojuegoPedido.countAll");
+	}
+	
+	public List<VideojuegoPedido> listByCustomer(Integer clienteId) {
+		return super.findWithNamedQuery("VideojuegoPedido.findByCustomer", 
+				"clienteId", clienteId);
 	}
 
 }

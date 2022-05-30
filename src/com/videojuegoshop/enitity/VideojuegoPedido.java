@@ -28,10 +28,10 @@ import javax.persistence.NamedQuery;
 @Entity
 @Table(name = "videojuego_pedido", catalog = "videogameshopyaa")
 @NamedQueries({
-	@NamedQuery(name = "VideojuegoPedido.findAll", query = "SELECT vp FROM VideojuegoPedido vp ORDER BY vp.fechaPedido DESC"),
-	@NamedQuery(name = "VideojuegoPedido.countAll", query = "SELECT COUNT(*) FROM VideojuegoPedido"),
-	
-})
+		@NamedQuery(name = "VideojuegoPedido.findAll", query = "SELECT vp FROM VideojuegoPedido vp ORDER BY vp.fechaPedido DESC"),
+		@NamedQuery(name = "VideojuegoPedido.countAll", query = "SELECT COUNT(*) FROM VideojuegoPedido"),
+		@NamedQuery(name = "VideojuegoPedido.findByCustomer", query = "SELECT vp FROM VideojuegoPedido vp WHERE vp.cliente.clienteId =:clienteId"),
+		@NamedQuery(name = "VideojuegoPedido.findByIdAndCustomer", query = "SELECT vp FROM VideojuegoPedido vp WHERE vp.pedidoId =:pedidoId AND vp.cliente.clienteId =:clienteId") })
 public class VideojuegoPedido implements java.io.Serializable {
 
 	private Integer pedidoId;
@@ -61,7 +61,8 @@ public class VideojuegoPedido implements java.io.Serializable {
 	}
 
 	public VideojuegoPedido(Cliente cliente, Date fechaPedido, String direccionEnvio, String nombreDestinatario,
-			String telefonoDestinatario, String metodoPago, float total, String estadoPedido, Set<DetallesPedido> detallesPedidos) {
+			String telefonoDestinatario, String metodoPago, float total, String estadoPedido,
+			Set<DetallesPedido> detallesPedidos) {
 		this.cliente = cliente;
 		this.fechaPedido = fechaPedido;
 		this.direccionEnvio = direccionEnvio;
@@ -72,6 +73,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 		this.estadoPedido = estadoPedido;
 		this.detallesPedidos = detallesPedidos;
 	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 
@@ -83,6 +85,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setPedidoId(Integer pedidoId) {
 		this.pedidoId = pedidoId;
 	}
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cliente_id", nullable = false)
 	public Cliente getCliente() {
@@ -92,6 +95,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "fecha_pedido", nullable = false, length = 19)
 	public Date getFechaPedido() {
@@ -101,6 +105,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setFechaPedido(Date fechaPedido) {
 		this.fechaPedido = fechaPedido;
 	}
+
 	@Column(name = "direccion_envio", nullable = false, length = 256)
 	public String getDireccionEnvio() {
 		return this.direccionEnvio;
@@ -109,6 +114,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setDireccionEnvio(String direccionEnvio) {
 		this.direccionEnvio = direccionEnvio;
 	}
+
 	@Column(name = "nombre_destinatario", nullable = false, length = 30)
 	public String getNombreDestinatario() {
 		return this.nombreDestinatario;
@@ -117,6 +123,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setNombreDestinatario(String nombreDestinatario) {
 		this.nombreDestinatario = nombreDestinatario;
 	}
+
 	@Column(name = "telefono_destinatario", nullable = false, length = 15)
 	public String getTelefonoDestinatario() {
 		return this.telefonoDestinatario;
@@ -125,6 +132,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setTelefonoDestinatario(String telefonoDestinatario) {
 		this.telefonoDestinatario = telefonoDestinatario;
 	}
+
 	@Column(name = "metodo_pago", nullable = false, length = 20)
 	public String getMetodoPago() {
 		return this.metodoPago;
@@ -133,6 +141,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setMetodoPago(String metodoPago) {
 		this.metodoPago = metodoPago;
 	}
+
 	@Column(name = "total", nullable = false, precision = 12, scale = 0)
 	public float getTotal() {
 		return this.total;
@@ -141,6 +150,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setTotal(float total) {
 		this.total = total;
 	}
+
 	@Column(name = "estado_pedido", nullable = false, length = 20)
 	public String getEstadoPedido() {
 		return this.estadoPedido;
@@ -149,6 +159,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setEstadoPedido(String estadoPedido) {
 		this.estadoPedido = estadoPedido;
 	}
+
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "videojuegoPedido", cascade = CascadeType.ALL, orphanRemoval = true)
 	public Set<DetallesPedido> getDetallesPedidos() {
 		return this.detallesPedidos;
@@ -157,15 +168,15 @@ public class VideojuegoPedido implements java.io.Serializable {
 	public void setDetallesPedidos(Set<DetallesPedido> detallesPedidos) {
 		this.detallesPedidos = detallesPedidos;
 	}
-	
+
 	@Transient
 	public int getVideogameCopies() {
 		int total = 0;
-		
+
 		for (DetallesPedido detallePedido : detallesPedidos) {
 			total += detallePedido.getCantidad();
 		}
-		
+
 		return total;
 	}
 

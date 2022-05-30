@@ -189,6 +189,22 @@ public class PedidosDAOTest {
 		assertTrue(listaPedidos.size() > 0);
 	}
 
+	
+	@Test
+	public void testListByCustomerNoOrders() {
+		Integer clienteId = 99;
+		
+		List<VideojuegoPedido> listaPedidos = pedidoDAO.listByCustomer(clienteId);
+		 assertTrue(listaPedidos.isEmpty());
+	}
+	
+	@Test
+	public void testListByCustomerHaveOrders() {
+		Integer clienteId = 5;
+		
+		List<VideojuegoPedido> listaPedidos = pedidoDAO.listByCustomer(clienteId);
+		 assertTrue(listaPedidos.size()>0);
+	}
 	@Test
 	public void testCount() {
 		long totalPedidos = pedidoDAO.count();
