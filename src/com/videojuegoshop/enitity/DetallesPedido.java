@@ -53,6 +53,7 @@ public class DetallesPedido implements java.io.Serializable {
 	public void setId(DetallesPedidoId id) {
 		this.id = id;
 	}
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "videojuego_id", insertable = false, updatable = false, nullable = false)
 	public Videojuego getVideojuego() {
@@ -61,8 +62,9 @@ public class DetallesPedido implements java.io.Serializable {
 
 	public void setVideojuego(Videojuego videojuego) {
 		this.videojuego = videojuego;
-
+		this.id.setVideojuego(videojuego);
 	}
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pedido_id", insertable = false, updatable = false, nullable = false)
 	public VideojuegoPedido getVideojuegoPedido() {
@@ -71,8 +73,9 @@ public class DetallesPedido implements java.io.Serializable {
 
 	public void setVideojuegoPedido(VideojuegoPedido videojuegoPedido) {
 		this.videojuegoPedido = videojuegoPedido;
-
+		this.id.setVideojuegoPedido(videojuegoPedido);
 	}
+	
 	@Column(name = "cantidad", nullable = false)
 	public int getCantidad() {
 		return cantidad;

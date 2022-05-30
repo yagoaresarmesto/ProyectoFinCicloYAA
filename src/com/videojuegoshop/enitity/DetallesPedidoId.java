@@ -16,22 +16,25 @@ public class DetallesPedidoId implements java.io.Serializable {
 	private Videojuego videojuego;
 	private VideojuegoPedido videojuegoPedido;
 
+	
 	public DetallesPedidoId() {
-
 	}
+	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "videojuego_id", insertable = false, updatable = false, nullable = false)
 	public Videojuego getVideojuego() {
-		return videojuego;
+		return this.videojuego;
 	}
 
 	public void setVideojuego(Videojuego videojuego) {
 		this.videojuego = videojuego;
 	}
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "pedido_id", insertable = false, updatable = false, nullable = false)
 	public VideojuegoPedido getVideojuegoPedido() {
-		return videojuegoPedido;
+		return this.videojuegoPedido;
 	}
 
 	public void setVideojuegoPedido(VideojuegoPedido videojuegoPedido) {
@@ -47,7 +50,6 @@ public class DetallesPedidoId implements java.io.Serializable {
 		return result;
 	}
 
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -60,7 +62,7 @@ public class DetallesPedidoId implements java.io.Serializable {
 		if (videojuego == null) {
 			if (other.videojuego != null)
 				return false;
-		} else if (!videojuego .equals(other.videojuego ))
+		} else if (!videojuego.equals(other.videojuego))
 			return false;
 		if (videojuegoPedido == null) {
 			if (other.videojuegoPedido != null)
@@ -69,7 +71,5 @@ public class DetallesPedidoId implements java.io.Serializable {
 			return false;
 		return true;
 	}
-
-
 
 }
