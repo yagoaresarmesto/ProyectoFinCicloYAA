@@ -159,6 +159,27 @@ public class PedidosDAOTest {
 
 		assertEquals(1, pedido.getDetallesPedidos().size());
 	}
+	
+	@Test
+	public void testGetByIdAndCustomerNull() {
+		Integer pedidoId= 10;
+		Integer clienteId = 99;
+		
+		VideojuegoPedido pedido = pedidoDAO.get(pedidoId, clienteId);
+		
+		assertNull(pedido);
+	}
+	
+	
+	@Test
+	public void testGetByIdAndCustomerNotNull() {
+		Integer pedidoId= 5;
+		Integer clienteId = 5;
+		
+		VideojuegoPedido pedido = pedidoDAO.get(pedidoId, clienteId);
+		
+		assertNotNull(pedido);
+	}
 
 	@Test
 	public void testDeletePedido() {
@@ -205,6 +226,9 @@ public class PedidosDAOTest {
 		List<VideojuegoPedido> listaPedidos = pedidoDAO.listByCustomer(clienteId);
 		 assertTrue(listaPedidos.size()>0);
 	}
+	
+	
+
 	@Test
 	public void testCount() {
 		long totalPedidos = pedidoDAO.count();

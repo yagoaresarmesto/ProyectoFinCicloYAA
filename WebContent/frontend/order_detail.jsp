@@ -15,7 +15,13 @@
 <body>
 	<jsp:directive.include file="header.jsp" />
 	<div align="center">
+		<c:if test="${pedido == null }">
+		<h2>No estas autorizado a ver este pedido</h2>
+		</c:if>
+
+		<c:if test="${pedido != null }"><
 		<h2>Tu pedido Id: ${pedido.pedidoId }</h2>
+		
 	</div>
 
 
@@ -29,12 +35,12 @@
 				<td><b>Order Date: </b></td>
 				<td>${pedido.fechaPedido}</td>
 			</tr>
-			
+
 			<tr>
 				<td><b>Cantidad: </b></td>
 				<td>${pedido.videogameCopies}</td>
 			</tr>
-		
+
 			<tr>
 				<td><b>Método Pago: </b></td>
 				<td>${pedido.metodoPago}</td>
@@ -97,6 +103,7 @@
 			</table>
 		</div>
 	</div>
+	</c:if>
 	<jsp:directive.include file="footer.jsp" />
 </body>
 </html>

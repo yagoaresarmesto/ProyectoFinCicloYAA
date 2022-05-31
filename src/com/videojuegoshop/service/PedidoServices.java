@@ -135,11 +135,34 @@ public class PedidoServices {
 
 		int pedidoId = Integer.parseInt(request.getParameter("id"));
 
-		VideojuegoPedido pedido = pedidoDao.get(pedidoId);
+		HttpSession session = request.getSession();
+		Cliente cliente = (Cliente) session.getAttribute("loggedCustomer");
+
+		VideojuegoPedido pedido = pedidoDao.get(pedidoId, cliente.getClienteId());
 		request.setAttribute("pedido", pedido);
 
 		String detailPage = "frontend/order_detail.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(detailPage);
+		dispatcher.forward(request, response);
+
+	}
+
+	public void showEditOrderForm() throws ServletException, IOException {
+
+		Integer pedidoId = Integer.parseInt(request.getParameter("id"));
+
+		HttpSession session = request.getSession();
+
+		Object videojuegoPendiente = session.getAttribute("NuevoVideojuegoPendienteDeAñadirPedido");
+		if (videojuegoPendiente == null) {
+			VideojuegoPedido pedido = pedidoDao.get(pedidoId);
+			session.setAttribute("pedido", pedido);
+		}else {
+			session.removeAttribute("NuevoVideojuegoPendienteDeAñadirPedido");
+		}
+
+		String editPage = "order_form.jsp";
+		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
 		dispatcher.forward(request, response);
 
 	}
