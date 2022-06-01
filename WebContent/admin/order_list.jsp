@@ -58,6 +58,17 @@
 
 	<jsp:directive.include file="footer.jsp" />
 
-	
+		<script>
+		$(document).ready(function() {
+			$(".deleteLink").each(function() {
+				$(this).on("click", function() {
+					pedidoId = $(this).attr("id");
+					if (confirm('Seguro que quieres eliminar este pedido con ID ' +  pedidoId + '?')) {
+						window.location = 'delete_order?id=' + pedidoId;
+					}					
+				});
+			});
+		});	
+	</script>
 </body>
 </html>

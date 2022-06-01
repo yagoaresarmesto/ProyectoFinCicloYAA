@@ -62,11 +62,11 @@
 				<tr>
 					<td><b>Order Status: </b></td>
 					<td><select name="estadoPedido">
-							<option value="enProceso">En proceso</option>
-							<option value="enviando">Enviando</option>
-							<option value="enviado">Enviado</option>
-							<option value="completado">Completado</option>
-							<option value="cancelado">Cancelado</option>
+							<option value="enProceso" <c:if test="${pedido.estadoPedido eq 'enProceso' }">selected='selected'</c:if>>En proceso</option>
+							<option value="enviando" <c:if test="${pedido.estadoPedido eq 'enviando' }">selected='selected'</c:if> >Enviando</option>
+							<option value="enviado" <c:if test="${pedido.estadoPedido eq 'enviado' }">selected='selected'</c:if> >Enviado</option>
+							<option value="completado" <c:if test="${pedido.estadoPedido eq 'completado' }">selected='selected'</c:if>>Completado</option>
+							<option value="cancelado" <c:if test="${pedido.estadoPedido eq 'cancelado' }">selected='selected'</c:if>>Cancelado</option>
 					</select></td>
 				</tr>
 			</table>
@@ -90,7 +90,8 @@
 						<td>${status.index + 1}</td>
 						<td>${detallesPedido.videojuego.titulo}</td>
 						<td>${detallesPedido.videojuego.compañia}</td>
-						<td><fmt:formatNumber
+						<td><input type="hidden" name="precio"
+							value="${detallesPedido.videojuego.precio}" /> <fmt:formatNumber
 								value="${detallesPedido.videojuego.precio}" type="currency" /></td>
 						<td><input type="hidden" name="videojuegoId"
 							value="${detallesPedido.videojuego.videojuegoId}" /> <input

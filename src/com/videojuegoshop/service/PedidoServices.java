@@ -31,10 +31,18 @@ public class PedidoServices {
 		this.response = response;
 		this.pedidoDao = new PedidosDAO();
 	}
-
+	
 	public void listAllOrder() throws ServletException, IOException {
+		listAllOrder(null);
+		
+	}
+
+	public void listAllOrder(String message) throws ServletException, IOException {
 		List<VideojuegoPedido> listaPedido = pedidoDao.listAll();
 
+		if (message != null) {
+			request.setAttribute("message", message);
+		}
 		request.setAttribute("listaPedido", listaPedido);
 		String listPage = "order_list.jsp";
 		RequestDispatcher dispatcher = request.getRequestDispatcher(listPage);
@@ -157,7 +165,7 @@ public class PedidoServices {
 		if (videojuegoPendiente == null) {
 			VideojuegoPedido pedido = pedidoDao.get(pedidoId);
 			session.setAttribute("pedido", pedido);
-		}else {
+		} else {
 			session.removeAttribute("NuevoVideojuegoPendienteDeAñadirPedido");
 		}
 
@@ -165,5 +173,72 @@ public class PedidoServices {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(editPage);
 		dispatcher.forward(request, response);
 
+	}
+
+	public void updateOrder() throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		VideojuegoPedido pedido = (VideojuegoPedido) session.getAttribute("pedido");
+
+		String nombreDestinatario = request.getParameter("nombreDestinatario");
+		String telefonoDestinatario = request.getParameter("telefonoDestinatario");
+		String direccionEnvio = request.getParameter("direccionEnvio");
+		String metodoPago = request.getParameter("metodoPago");
+		String estadoPedido = request.getParameter("estadoPedido");
+
+		pedido.setNombreDestinatario(nombreDestinatario);
+		pedido.setTelefonoDestinatario(telefonoDestinatario);
+		pedido.setDireccionEnvio(direccionEnvio);
+		pedido.setMetodoPago(metodoPago);
+		pedido.setEstadoPedido(estadoPedido);
+
+		String[] arrayVideojuegoId = request.getParameterValues("videojuegoId");
+		String[] arrayPrecio = request.getParameterValues("precio");
+		String[] arrayCantidad = new String[arrayVideojuegoId.length];
+
+		for (int i = 1; i <= arrayCantidad.length; i++) {
+			arrayCantidad[i - 1] = request.getParameter("cantidad" + i);
+		}
+
+		Set<DetallesPedido> pedidoDetalles = pedido.getDetallesPedidos();
+		pedidoDetalles.clear();
+
+		float totalImporte = 0.0f;
+
+		for (int i = 0; i < arrayVideojuegoId.length; i++) {
+			int videojuegoId = Integer.parseInt(arrayVideojuegoId[i]);
+			int cantidad = Integer.parseInt(arrayCantidad[i]);
+			float precio = Float.parseFloat(arrayPrecio[i]);
+
+			float subtotal = precio * cantidad;
+
+			DetallesPedido pedidoDetalle = new DetallesPedido();
+			pedidoDetalle.setVideojuego(new Videojuego(videojuegoId));
+			pedidoDetalle.setCantidad(cantidad);
+			pedidoDetalle.setSubtotal(subtotal);
+			pedidoDetalle.setVideojuegoPedido(pedido);
+
+			pedidoDetalles.add(pedidoDetalle);
+
+			totalImporte += subtotal;
+
+		}
+
+		pedido.setTotal(totalImporte);
+
+		pedidoDao.update(pedido);
+
+		String message = "El pedido " + pedido.getPedidoId() +" ha sido actualizado con éxito";
+		
+		listAllOrder(message);
+		
+	}
+
+	public void deleteOrder() throws ServletException, IOException {
+		Integer pedidoId = Integer.parseInt(request.getParameter("id"));
+		pedidoDao.delete(pedidoId);
+		
+		String message = "El pedido ID " + pedidoId + " ha sido eliminado con éxito.";
+		listAllOrder(message);
+		
 	}
 }
