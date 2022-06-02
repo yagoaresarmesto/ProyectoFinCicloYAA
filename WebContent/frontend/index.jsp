@@ -43,66 +43,34 @@
 		</div>
 		<div align="center" style="clear: both">
 			<h2>Más vendidos</h2>
+			<div align="center" style="width: 80%; margin: 0 auto">
+
+			<c:forEach items="${listVideojuegoMasVendidos }" var="videojuego">
+				<div style="display: inline-block; margin: 10px;">
+					<div>
+						<a href="view_videogame?id=${videojuego.videojuegoId }"></a> <img
+							src="data:image/jpg;base64,${videojuego.base64Image }"
+							width="128" height="164" />
+					</div>
+					<div>
+						<a href="view_videogame?id=${videojuego.videojuegoId }">
+							${videojuego.titulo } </a>
+					</div>
+
+					<jsp:directive.include file="videogame_rating.jsp" />
+					<div></div>
+					<div>${videojuego.compañia }</div>
+					<div>${videojuego.precio }</div>
+				</div>
+
+			</c:forEach>
+			
 		</div>
 		<div align="center" style="clear: both">
 			<h2>Favoritos</h2>
 		</div>
 	</div>
 
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 
 	<jsp:directive.include file="footer.jsp" />
 

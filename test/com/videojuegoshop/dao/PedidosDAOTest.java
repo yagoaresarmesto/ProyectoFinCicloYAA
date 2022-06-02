@@ -32,7 +32,7 @@ public class PedidosDAOTest {
 
 	@Test
 	public void testCreateVideojuegoPedido() {
-
+		
 		VideojuegoPedido pedido = new VideojuegoPedido();
 		Cliente cliente = new Cliente();
 		cliente.setClienteId(4);
@@ -233,6 +233,13 @@ public class PedidosDAOTest {
 	public void testCount() {
 		long totalPedidos = pedidoDAO.count();
 		assertEquals(2, totalPedidos);
+	}
+	
+	@Test
+	public void testListMostRecentSales() { //Falla porque sólo hice 1 venta
+		List<VideojuegoPedido> pedidoRecientes = pedidoDAO.listMostRecentSales();
+		
+		assertEquals(3, pedidoRecientes.size());
 	}
 
 }

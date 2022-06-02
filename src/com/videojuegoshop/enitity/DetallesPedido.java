@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 // Generated 1 abr 2022 13:11:07 by Hibernate Tools 5.6.3.Final
@@ -18,6 +20,11 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "detalles_pedido", catalog = "videogameshopyaa")
+@NamedQueries({
+	@NamedQuery(name = "DetallePedidos.bestSelling", 
+			query = "SELECT dp.videojuego FROM DetallesPedido dp GROUP by dp.videojuego.videojuegoId "
+					+ "ORDER BY SUM(dp.cantidad) DESC")
+})
 public class DetallesPedido implements java.io.Serializable {
 
 	private DetallesPedidoId id = new DetallesPedidoId();

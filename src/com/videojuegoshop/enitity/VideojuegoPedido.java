@@ -47,7 +47,7 @@ public class VideojuegoPedido implements java.io.Serializable {
 
 	public VideojuegoPedido() {
 	}
-
+	
 	public VideojuegoPedido(Cliente cliente, Date fechaPedido, String direccionEnvio, String nombreDestinatario,
 			String telefonoDestinatario, String metodoPago, float total, String estadoPedido) {
 		this.cliente = cliente;

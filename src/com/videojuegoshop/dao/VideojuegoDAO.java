@@ -77,4 +77,9 @@ public class VideojuegoDAO extends JpaDAO<Videojuego> implements GenericDAO<Vide
 	public long countByCategory(int categoriaId) {
 		return super.countWithNamedQuery("Videojuego.countByCategory", "catId", categoriaId);
 	}
+	
+	public List<Videojuego> listBestSellingVideogames() {
+		return super.findWithNamedQuery("DetallePedidos.bestSelling", 0, 4);
+
+	}
 }

@@ -23,12 +23,10 @@ import javax.persistence.Transient;
 
 @Entity
 @Table(name = "review", catalog = "videogameshopyaa")
-@NamedQueries({
-	@NamedQuery(name = "Review.listAll", query = "SELECT r FROM Review r"),
-	@NamedQuery(name = "Review.countAll", query = "SELECT COUNT(r) FROM Review r"),
-	@NamedQuery(name = "Review.findByCustomerAndVideogame", 
-	query = "SELECT r FROM Review r WHERE r.cliente.clienteId =:clienteId"
-			+ " AND r.videojuego.videojuegoId =:videojuegoId"),
+@NamedQueries({ @NamedQuery(name = "Review.listAll", query = "SELECT r FROM Review r"),
+		@NamedQuery(name = "Review.countAll", query = "SELECT COUNT(r) FROM Review r"),
+		@NamedQuery(name = "Review.findByCustomerAndVideogame", query = "SELECT r FROM Review r WHERE r.cliente.clienteId =:clienteId"
+				+ " AND r.videojuego.videojuegoId =:videojuegoId"),
 })
 public class Review implements java.io.Serializable {
 
@@ -52,7 +50,7 @@ public class Review implements java.io.Serializable {
 		this.comentario = comentario;
 		this.reviewFecha = reviewFecha;
 	}
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "review_id", unique = true, nullable = false)
@@ -64,17 +62,16 @@ public class Review implements java.io.Serializable {
 		this.reviewId = reviewId;
 	}
 
-
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "cliente_id", nullable = false)
 	public Cliente getCliente() {
 		return this.cliente;
 	}
-	
+
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "videojuego_id", nullable = false)
 	public Videojuego getVideojuego() {
@@ -102,6 +99,7 @@ public class Review implements java.io.Serializable {
 	public void setEncabezado(String encabezado) {
 		this.encabezado = encabezado;
 	}
+
 	@Column(name = "comentario", nullable = false, length = 500)
 	public String getComentario() {
 		return this.comentario;
@@ -110,6 +108,7 @@ public class Review implements java.io.Serializable {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
+
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "review_fecha", nullable = false, length = 19)
 	public Date getReviewFecha() {
@@ -135,6 +134,6 @@ public class Review implements java.io.Serializable {
 		}
 
 		return result.substring(0, result.length() - 1);
-	}	
+	}
 
 }

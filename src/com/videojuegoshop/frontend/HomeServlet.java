@@ -30,9 +30,12 @@ public class HomeServlet extends HttpServlet {
 		VideojuegoDAO videojuegoDAO = new VideojuegoDAO();
 		
 		List<Videojuego> listaNuevosVideojuegos = videojuegoDAO.listNewVideojuegos();
+		List<Videojuego> listVideojuegoMasVendidos = videojuegoDAO.listBestSellingVideogames();
+		
 		
         request.setAttribute("listaNuevosVideojuegos", listaNuevosVideojuegos);
-		
+        request.setAttribute("listVideojuegoMasVendidos", listVideojuegoMasVendidos);
+        
 		String homepage = "frontend/index.jsp"; // Redirección a la homePage
 		RequestDispatcher dispacher = request.getRequestDispatcher(homepage);
 		dispacher.forward(request, response);

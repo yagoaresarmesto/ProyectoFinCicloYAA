@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.videojuegoshop.enitity.Videojuego;
 import com.videojuegoshop.enitity.VideojuegoPedido;
 
 public class PedidosDAO extends JpaDAO<VideojuegoPedido> implements GenericDAO<VideojuegoPedido> {
@@ -37,6 +38,7 @@ public class PedidosDAO extends JpaDAO<VideojuegoPedido> implements GenericDAO<V
 		List<VideojuegoPedido> result = super.findWithNamedQuery("VideojuegoPedido.findByIdAndCustomer", parameters );
 		
 		if (!result.isEmpty()) {
+			
 			return result.get(0);
 		}
 		return null;
@@ -57,10 +59,16 @@ public class PedidosDAO extends JpaDAO<VideojuegoPedido> implements GenericDAO<V
 	public long count() {
 		return super.countWithNamedQuery("VideojuegoPedido.countAll");
 	}
+
 	
 	public List<VideojuegoPedido> listByCustomer(Integer clienteId) {
 		return super.findWithNamedQuery("VideojuegoPedido.findByCustomer", 
 				"clienteId", clienteId);
+	}
+	
+	
+	public List<VideojuegoPedido> listMostRecentSales() {
+		return super.findWithNamedQuery("VideojuegoPedido.findAll", 0, 3);
 	}
 
 }

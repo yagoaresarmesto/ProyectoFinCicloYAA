@@ -218,4 +218,16 @@ public class VideojuegoDAOTest {
 		
 		assertTrue(numofVideogames == 1 );
 	}
+	
+	@Test
+	public void testListBestSellingVideogames() {
+		
+		List<Videojuego> topBestSellingVideogames = videojuegoDao.listBestSellingVideogames();
+		
+		for(Videojuego videojuego : topBestSellingVideogames) {
+			System.out.println(videojuego.getTitulo());
+		}
+		
+	    assertEquals(4, topBestSellingVideogames);
+	}
 }
