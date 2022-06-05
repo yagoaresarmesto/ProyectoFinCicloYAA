@@ -17,71 +17,73 @@
 
 	<jsp:directive.include file="header.jsp" />
 
-	<div align="center">
-		<table width="80%" style="border: 0">
-			<tr>
-				<td colspan="3" align="left">
-					<h2>${ videojuego.titulo}</h2> by ${ videojuego.compañia}
-				</td>
-			</tr>
-			<tr>
-				<td rowspan="2"><img
-					src="data:image/jpg;base64,${videojuego.base64Image}" width="240"
-					height="300" /></td>
-				<td valign="top" align="left"><jsp:directive.include
-						file="videogame_rating.jsp" /> <a href="#reviews">${fn:length(videojuego.reviews)}
-						Reviews</a></td>
 
-				<td valign="top" rowspan="2" width="20%">
-					<h2>$${videojuego.precio}</h2> <br />
-					<button id ="buttonAddToCart">Añadir al carrito</button>
-				</td>
-			</tr>
-			<tr>
-				<td valign="top">${videojuego.descripcion}</td>
-			</tr>
-			<tr></tr>
-			<tr>
-				<td><h2>
-						<a id="reviews">Reviews</a>
-					</h2></td>
-				<td colspan="2">
-					<button id="buttonWriteReview">Write a Customer Review</button>
-				</td>
-			</tr>
-
-			<tr>
-				<td colspan="3" align="left">
-					<table>
-						<c:forEach items="${videojuego.reviews}" var="review">
-							<tr>
-								<td><c:forTokens items="${review.stars}" delims=","
-										var="star">
-										<c:if test="${star eq 'on'}">
-											<img src="images/rating_on.png" />
-										</c:if>
-										<c:if test="${star eq 'off'}">
-											<img src="images/rating_off.png" />
-										</c:if>
-									</c:forTokens> - <b>${review.encabezado}</b></td>
-							</tr>
-							<tr>
-								<td>by ${review.cliente.nombrecompleto} on
-									${review.reviewFecha}</td>
-							</tr>
-							<tr>
-								<td><i>${review.comentario}</i></td>
-							</tr>
-							<tr>
-								<td>&nbsp;</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</td>
-			</tr>
-		</table>
-
+	<div class="contenedor-videojuegos-detalle">
+		<div class="contenedor-detalle-titulo">
+			<h1>${ videojuego.titulo}</h1>
+			<h3>(${ videojuego.compañia})</h3>
+		</div>
+		<div class="contenedor-detalle-estrellas">
+			<jsp:directive.include file="videogame_rating.jsp" />
+			<a href="#reviews">${fn:length(videojuego.reviews)} Reviews</a>
+			<h2>$${videojuego.precio}</h2>
+		</div>
 	</div>
+
+	<div class="contenedor-videojuegos-detalle2">
+		<div class="contenedor-detalle-imagen">
+			<img src="data:image/jpg;base64,${videojuego.base64Image}"
+				width="100%" height="100%" />
+
+		</div>
+		<div class="contenedor-detalle-descripcion">
+			${videojuego.descripcion}</div>
+			
+			<div class="contenedor-detalle-botones">
+		<button class="boton-carrito" id="buttonAddToCart">Añadir al carrito <i class="fa-solid fa-cart-shopping"></i></button>
+		<br><br><br><br>
+		<button class="boton-review" id="buttonWriteReview">Escribe una Review <i class="fa-solid fa-star"></i></button>	
+			
+			</div>
+	</div>
+
+	<div class="contenedor-videojuegos-detalle3">
+		<div class="contenedor-detalle-reviews">
+			<table>
+			<h2 id="reviews">Reviews de los usuarios</h2>
+				<c:forEach items="${videojuego.reviews}" var="review">
+					<tr>
+						<td><c:forTokens items="${review.stars}" delims=","
+								var="star">
+								<c:if test="${star eq 'on'}">
+									<img src="images/rating_on.png" />
+								</c:if>
+								<c:if test="${star eq 'off'}">
+									<img src="images/rating_off.png" />
+								</c:if>
+							</c:forTokens> - <b>${review.encabezado}</b></td>
+					</tr>
+					<tr>
+						<td>by ${review.cliente.nombrecompleto} on
+							${review.reviewFecha}</td>
+					</tr>
+					<tr>
+						<td><i>${review.comentario}</i></td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+
+
+
+
+
+<br><br>
+
 	<jsp:directive.include file="footer.jsp" />
 
 	<script type="text/javascript">
@@ -89,10 +91,10 @@
 			$("#buttonWriteReview").click(function() {
 				window.location = 'write_review?videogame_id=' + ${videojuego.videojuegoId};
 			});
-			
+
 			$("#buttonAddToCart").click(function() {
 				window.location = 'add_to_cart?videogame_id=' + ${videojuego.videojuegoId};
-			});				
+			});
 		});
 	</script>
 </body>

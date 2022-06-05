@@ -11,82 +11,85 @@
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.2/jquery.rateyo.min.js"></script>
 </head>
 <body>
 
 	<jsp:directive.include file="header.jsp" />
 
-	<div align="center">
-		<form id="reviewForm" action="submit_review" method="post">
-			<table class="normal" width="60%">
-				<tr>
-					<td><h2>Tus reviews</h2></td>
-					<td>&nbsp;</td>
-					<td><h2>${loggedCustomer.nombrecompleto}</h2></td>
-				</tr>
-				<tr>
-					<td colspan="3"><hr/></td>
-				</tr>
-				<tr>
-					<td>
-						<span>${videojuego.titulo}</span><br/>
-						<img src="data:image/jpg;base64,${videojuego.base64Image}" />
-					</td>
-					<td>
-					    <div id="rateYo"></div>
-						<input type="hidden" id="rating" name="rating" />
-						<input type="hidden" name="videojuegoId" value="${videojuego.videojuegoId}" />
-						<br/>
-						<input type="text" name="encabezado" size="60" placeholder="Encabezado del comentario(obligatorio)" />
-						<br/>
-						<br/>
-						<textarea name="comentario" cols="70" rows="10" placeholder="Escribe los detalles" ></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="3" align="center">
-						<button type="submit">Enviar</button>
-						&nbsp;&nbsp;
-						<button id="buttonCancel">Cancel</button>
-					</td>
-				</tr>
-			</table>
-		</form>
+	<div class="contenedor-videojuegos-detalle">
+		<div class="contenedor-detalle-titulo">
+			<h1>Mi review: ${ videojuego.titulo}</h1>
+			<h3>(${ videojuego.compañia})</h3>
+		</div>
+		<div class="contenedor-detalle-estrellas"></div>
 	</div>
 
+	<form id="reviewForm" action="submit_review" method="post">
+		<div class="contenedor-videojuegos-detalle2-comentario">
+
+			<div class="contenedor-detalle-imagen">
+				<img src="data:image/jpg;base64,${videojuego.base64Image}"
+					width="100%" height="100%" />
+
+			</div>
+			<div class="contenedor-detalle-comentario">
+				<div id="rateYo"></div>
+				<input type="hidden" id="rating" name="rating" /> <input
+					type="hidden" name="videojuegoId"
+					value="${videojuego.videojuegoId}" /> <br /> <input
+					class="input-general" type="text" name="encabezado" size="60"
+					placeholder="Encabezado del comentario(obligatorio)" /> <br /> <br />
+				<textarea class="input-general" name="comentario" cols="105"
+					rows="15" placeholder="Escribe los detalles"></textarea>
+				<br> <br>
+				<tr>
+					<td colspan="3" align="center">
+						<button class="botones-review-aceptar" type="submit">Enviar</button> &nbsp;&nbsp;
+						<button class="botones-review-cancelar" id="buttonCancel">Cancelar</button>
+					</td>
+				</tr>
+
+			</div>
+		</div>
+	</form>
+
+
+	<br>
+	<br>
+
 	<jsp:directive.include file="footer.jsp" />
-	
+
 	<script type="text/javascript">
+		$(document).ready(function() {
 
-	$(document).ready(function() {
-		
-		$("#buttonCancel").click(function() {
-			history.go(-1);
-		});
-		
-		$("#reviewForm").validate({
-			rules: {
-				encabezado: "required",
-				comentario: "required"
-			},
-			
-			messages: {
-				encabezado: "Porvafor, introduce un encabezado",				
-				comentario: "Porfavor, introduce un comentario"
-			}
-		});
+			$("#buttonCancel").click(function() {
+				history.go(-1);
+			});
 
-		
-		$("#rateYo").rateYo({
-			starWidth: "40px",
-			fullStar: true,
-			onSet: function (rating, rateYoInstance) {
-				$("#rating").val(rating);
-			}
-		});		
-	});
+			$("#reviewForm").validate({
+				rules : {
+					encabezado : "required",
+					comentario : "required"
+				},
+
+				messages : {
+					encabezado : "Porvafor, introduce un encabezado",
+					comentario : "Porfavor, introduce un comentario"
+				}
+			});
+
+			$("#rateYo").rateYo({
+				starWidth : "40px",
+				fullStar : true,
+				onSet : function(rating, rateYoInstance) {
+					$("#rating").val(rating);
+				}
+			});
+		});
 	</script>
 </body>
 

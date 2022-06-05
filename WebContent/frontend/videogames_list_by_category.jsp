@@ -15,36 +15,31 @@
 	<jsp:directive.include file="header.jsp" />
 
 
-	<div align="center">
-		<h2>${categoria.nombre}</h2>
+	<div align="center" style="clear: both">
+		<div class="contenedor_videojuegos">
+				<h2>${categoria.nombre}</h2>
+			<c:forEach items="${listaVideojuegos }" var="videojuego">
+				<a href="view_videogame?id=${videojuego.videojuegoId }">
+					<div class="videojuego">
+						<img src="data:image/jpg;base64,${videojuego.base64Image }"
+							width="128" height="164" class="videojuego__detalles-imagen" />
+						<div class="videojuego'__detalles">
+							<h4 class="encabezado--centrado">${videojuego.titulo }</h4>
+
+							<div class="videojuego-datos">
+								<jsp:directive.include file="videogame_rating.jsp" />
+								<h5>${videojuego.compañia }</</h5>
+								<p>${videojuego.precio }</</p>
+							</div>
+						</div>
+
+					</div>
+				</a>
+			</c:forEach>
+		</div>
 	</div>
-
-	<div align="center" style="width: 80% margin: 0 auto">
-
-		<c:forEach items="${listaVideojuegos }" var="videojuego">
-			<div style="float: left; display: inline-block; margin: 10px;">
-				<div>
-					<a href="view_videogame?id=${videojuego.videojuegoId }"></a> <img
-						src="data:image/jpg;base64,${videojuego.base64Image }" width="128"
-						height="164" />
-				</div>
-				<div>
-					<a href="view_videogame?id=${videojuego.videojuegoId }">
-						${videojuego.titulo } </a>
-				</div>
-				<div>
-					<jsp:directive.include file="videogame_rating.jsp" />
-				
-				</div>
-				<div>${videojuego.compañia }</div>
-				<div>${videojuego.precio }</div>
-			</div>
-
-		</c:forEach>
-	</div>
-
-	<jsp:directive.include file="footer.jsp" />
-
+	
+	
 
 </body>
 </html>

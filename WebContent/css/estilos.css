@@ -16,6 +16,8 @@ body {
 	font-family: 'Oswald', sans-serif;
 	font-family: 'Staatliches', cursive;
 	background-color: #fafafa;
+	margin: 0;
+	height:100%;
 }
 
 /*HEADER DE USUARIOS NORMALES*/
@@ -402,6 +404,182 @@ body {
   color: #ff8040;
 }
 
+
+/*Página detalles*/
+
+.contenedor-videojuegos-detalle{
+	margin-left: 15%;
+	margin-right: 15%;
+	display: grid;
+	grid-template-columns: 30% auto;
+	background-color: #ffffff;
+	padding: 1%;
+	border-bottom: 1px solid #000000;
+}
+
+.contenedor-detalle-titulo{
+	color: #000000;
+	background-color: #ffffff;
+	padding-left: 7%;
+	text-align: left;
+}
+
+.contenedor-detalle-estrellas{
+	color: #00d900;
+	background-color: #ffffff;
+	padding-top: 2%;
+	font-size: 20px;
+	text-align: right;
+	padding-right: 8%;
+}
+
+.contenedor-videojuegos-detalle2{
+	margin-left: 15%;
+	margin-right: 15%;
+	display: grid;
+	grid-template-columns: 25% 40% auto;
+	background-color: #ffffff;
+	padding: 1%;
+	height:600px;
+	border-bottom: 1px solid #000000;
+}
+.contenedor-detalle-imagen{
+	background-color: green;
+}
+.contenedor-detalle-descripcion{
+	background-color: #ffffff;
+	padding: 10%;
+	text-align: justify;
+    text-justify: inter-word;
+}
+
+.contenedor-detalle-botones{
+	background-color: #ffffff;
+	padding: 5%;
+	text-align: right;
+	padding-top: 20%
+}
+
+#buttonAddToCart:hover {
+  background-color: #ffd3a8;
+}
+
+#buttonAddToCart {
+  color: #000000;
+}
+.boton-carrito {
+  height: 4em;
+  width: 90%;
+  padding: 1.5em auto;
+  margin: 1em auto;
+  background-color: #ff8040;
+  border-color: black;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+ 
+}
+
+#buttonWriteReview:hover {
+  background-color: #80ffff;
+}
+
+#buttonWriteReview {
+  color: #000000;
+}
+.boton-review {
+  height: 4em;
+  width: 90%;
+  padding: 1.5em auto;
+  margin: 1em auto;
+  background-color: #0080ff;
+  border-color: black;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
+  transition: all 0.2s cubic-bezier(.4,0,.2,1);
+ 
+}
+
+
+.contenedor-videojuegos-detalle3{
+	margin-left: 15%;
+	margin-right: 15%;
+	display: grid;
+	grid-template-columns: 35% 40%;
+	background-color: #ffffff;
+	padding: 1%;
+	
+}
+.contenedor-detalle-reviews{
+	background-color: white;
+	padding: 1%;
+}
+
+.contenedor-videojuegos-detalle2-comentario{
+	margin-left: 15%;
+	margin-right: 15%;
+	display: grid;
+	grid-template-columns: 25% 70% auto;
+	background-color: #ffffff;
+	padding: 1%;
+	height:600px;
+	border-bottom: 1px solid #000000;
+}
+
+.contenedor-detalle-comentario{
+	background-color: #ffffff;
+	padding-left: 10%;
+	text-align: justify;
+    text-justify: inter-word;
+}
+
+.input-general{
+	outline: none;
+	padding:10px;
+	border-radius: 4px;
+}
+
+.input-general:focus{
+	border-color: orange;
+}
+.botones-review-aceptar{
+  text-transform: uppercase;
+  outline: 0;
+  background: #bfff80;
+  width: 150px;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #000000;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.botones-review-cancelar{
+  text-transform: uppercase;
+  outline: 0;
+  background: #dfdfdf;
+  width: 150px;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #000000;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.botones-review-aceptar:hover {
+  background-color: #00ff00;
+}
+.botones-review-cancelar:hover {
+  background-color: #ff0000;
+}
 /*_________________________________________________________*/
 .header-admin {
 	display: grid;
@@ -444,7 +622,7 @@ section, footer {
 	background: #ffffff;
 	color: #868c96;
 	border-top: 1px solid #000000;
-	bottom: 0;    
+    width: 100%;
 }
 
 footer p {

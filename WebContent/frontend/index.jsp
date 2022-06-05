@@ -87,9 +87,6 @@
 
 
 
-
-
-
 	<div align="center" style="clear: both">
 	<br>
 		<jsp:directive.include file="footer.jsp" />
