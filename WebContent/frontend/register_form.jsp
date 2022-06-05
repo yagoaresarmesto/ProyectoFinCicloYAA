@@ -17,80 +17,59 @@
 </head>
 <body>
 	<jsp:directive.include file="header.jsp" />
-	<div align="center">
 
-		<h2>Registrarse en la web</h2>
-	</div>
-	<hr>
-	<div align="center">
+
+
+	<div class="login">
 		<form action="register_customer" method="post" id="customerForm">
+			<div class="form">
+				<span class="material-icons">Registrate</span> <input type="text"
+					id="email" name="email" placeholder="Email" /> <input type="text"
+					id="nombreCompleto" name="nombreCompleto"
+					placeholder="Nombre y apellidos" /> <input type="password"
+					id="contraseña" name="contraseña" placeholder="Contraseña" /> <input
+					type="password" id="confirmarContraseña" name="confirmarContraseña"
+					placeholder="Repita contraseña" /> <input type="text"
+					id="telefono" name="telefono" placeholder="Teléfono" /> <input
+					type="text" id="direccion" name="direccion" placeholder="Dirección" />
+				<input type="text" id="ciudad" name="ciudad" placeholder="Ciudad" />
+				<input type="text" id="codigoPostal" name="codigoPostal"
+					placeholder="Código Postal" /> <input type="text" id="pais"
+					name="pais" placeholder="País" />
 
-			<table>
-				<tr>
-					<td align="right">Email:</td>
-					<td align="left"><input type="text" id="email" name="email"
-						size="45"/></td>
-				</tr>
-				<tr>
-					<td align="right">Nombre Completo:</td>
-					<td align="left"><input type="text" id="nombreCompleto"
-						name="nombreCompleto" size="45" /></td>
-				</tr>
-
-				<tr>
-					<td align="right">Contraseña:</td>
-					<td align="left"><input type="password" id="contraseña"
-						name="contraseña" size="45"/></td>
-				</tr>
-
-				<tr>
-					<td align="right">Confirmar Contraseña:</td>
-					<td align="left"><input type="password"
-						id="confirmarContraseña" name="confirmarContraseña" size="45"/></td>
-				</tr>
-
-				<tr>
-					<td align="right">Telefono:</td>
-					<td align="left"><input type="text" id="telefono"
-						name="telefono" size="45" /></td>
-				</tr>
-
-				<tr>
-					<td align="right">Dirección:</td>
-					<td align="left"><input type="text" id="direccion"
-						name="direccion" size="45"/></td>
-				</tr>
-
-				<tr>
-					<td align="right">Ciudad:</td>
-					<td align="left"><input type="text" id="ciudad" name="ciudad"
-						size="45"/></td>
-				</tr>
-
-				<tr>
-					<td align="right">Código Postal:</td>
-					<td align="left"><input type="text" id="codigoPostal"
-						name="codigoPostal" size="45"/></td>
-				</tr>
-
-				<tr>
-					<td align="right">País:</td>
-					<td align="left"><input type="text" id="pais" name="pais"
-						size="45"/></td>
-				</tr>
-
-				<tr>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="Save">
-
-						<button id="buttonCancel">Cancelar</button>
-				</tr>
-			</table>
+				<button type="submit">Registrarse</button>
+				<br> <br> <a href="login">Ya tiene cuenta?
+					Inicia sesión aquí</a>
+			</div>
 		</form>
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<jsp:directive.include file="footer.jsp" />
 </body>

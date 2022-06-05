@@ -16,40 +16,39 @@
 
 	<jsp:directive.include file="header.jsp" />
 
-	<div align="center">
-		<h1>Administración</h1>
-		<h2>Login Cliente</h2>
+	<div class="contenedor-login">
+	<form id="LoginForm" action="login" method="post">
 
-		<c:if test="${message !=null}">
-			<div align="center">
-				<h4>${message}</h4>
+	
+		<div class="login">
+			<div class="form">
+					<span class="material-icons">Login</span> <input type="text"
+						placeholder="Email" name="email" /> <input type="password"
+						placeholder="Contraseña" name="contraseña"  />
+					<button type="submit">Inicia Sesión</button>
+					<br><br>
+					<a href="register">Aún no tiene cuenta? Registrese aquí</a>
 			</div>
-		</c:if>
-		<form id="LoginForm" action="login" method="post">
-
-			<table>
-				<tr>
-					<td>Email:</td>
-					<td><input type="text" name="email" size="20"></td>
-
-				</tr>
-
-				<tr>
-					<td>Contraseña:</td>
-					<td><input type="password" name="contraseña" size="20"></td>
-
-				</tr>
-				<tr>
-					<td>
-						<button type="submit">Login</button>
-					</td>
-				</tr>
-			</table>
+		</div>
 		</form>
 	</div>
 
-	<jsp:directive.include file="footer.jsp" />
-	
+	<c:if test="${message !=null}">
+		<div align="center">
+			<h4>${message}</h4>
+		</div>
+	</c:if>
+
+
+
+
+
+
+
+
+
+
+
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#LoginForm").validate({

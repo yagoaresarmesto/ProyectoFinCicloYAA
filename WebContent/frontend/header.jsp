@@ -1,21 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<header class="header">
-	<div class="contenedor-logo">
-		<a href="${pageContext.request.contextPath}/"> <img
-			src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
-			width="120" height="80">
-		</a>
-	</div>
-	<div class="contenedor-buscador">
 
-		<form action="search" method="get" class="search-bar">
-			<input type="text" placeholder="Busca en LVCVSGAMES">
-			<button type="submit" value="Search">
-				<i class="fa-solid fa-magnifying-glass"></i>
-			</button>
-	    </form>
-	</div>
-	<c:if test="${loggedCustomer==null}">
+<c:if test="${loggedCustomer==null}">
+	<!-- Si el usuario no está logeado se muestra este menú -->
+	<header class="header">
+		<div class="contenedor-logo">
+			<a href="${pageContext.request.contextPath}/"> <img
+				src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
+				width="120" height="80">
+			</a>
+		</div>
+		<div class="contenedor-buscador">
+
+			<form action="search" method="get" class="search-bar">
+				<input type="text" placeholder="Busca en LVCVSGAMES">
+				<button type="submit" value="Search">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+			</form>
+		</div>
+
 		<div class="contenedor-botones-1">
 			<a href="login">
 				<button type="submit">
@@ -27,34 +30,87 @@
 		<div class="contenedor-botones-2">
 			<a href="register">
 				<button>
-					<i class="fa-solid fa-user"></i></i>&nbsp;
+					<i class="fa-solid fa-user"></i>&nbsp;
 				</button>
 			</a>
 		</div>
-	</c:if>
 
-	<c:if test="${loggedCustomer!=null}">
-		<a href="view_profile">Bienvenido, ${loggedCustomer.nombrecompleto }
-		</a>
-		<a href="view_orders"> VP</a>
-		<a href="logout"> CS</a>
-	
-	</c:if>
+		<div class="contenedor-botones-3">
+			<a href="view_cart">
+				<button type="submit">
+
+					<i class="fa-solid fa-cart-shopping"></i>
+
+				</button>
+
+			</a>
+		</div>
+
+	</header>
+</c:if>
 
 
+<c:if test="${loggedCustomer!=null}">
+	<!-- Si el usuario está logeado se muestra este menú -->
 
-	
+	<header class="header-logeado">
+		<div class="contenedor-logo">
+			<a href="${pageContext.request.contextPath}/"> <img
+				src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
+				width="120" height="80">
+			</a>
+		</div>
+		<div class="contenedor-buscador-logueado">
 
-	<div class="contenedor-botones-3">
-		<a href="view_cart">
-			<button type="submit">
+			<form action="search" method="get" class="search-bar">
+				<input type="text" placeholder="Busca en LVCVSGAMES">
+				<button type="submit" value="Search">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+			</form>
+		</div>
 
-				<i class="fa-solid fa-cart-shopping"></i>
+		<div class="contenedor-botones-1-logueado">
+			<a href="view_profile">
+				<button type="submit">
+				<i class="fa-solid fa-user"></i>
+				</button>
+			${loggedCustomer.nombrecompleto }
+			</a>
+		</div>
 
-			</button>
-		</a>
-	</div>
-</header>
+		<div class="contenedor-botones-2-logueado">
+			<a href="view_orders">
+				<button>
+					<i class="fa-solid fa-file-lines"></i>
+				</button>
+			</a>
+		</div>
+
+		<div class="contenedor-botones-3-logueado">
+			<a href="view_cart">
+				<button type="submit">
+
+					<i class="fa-solid fa-cart-shopping"></i>
+
+				</button>
+
+			</a>
+		</div>
+
+		<div class="contenedor-botones-4-logueado">
+			<a href="logout">
+				<button type="submit">
+					<i class="fa-solid fa-arrow-right-from-bracket"></i>
+				</button>
+
+			</a>
+		</div>
+
+	</header>
+
+</c:if>
+
 
 
 <div>
