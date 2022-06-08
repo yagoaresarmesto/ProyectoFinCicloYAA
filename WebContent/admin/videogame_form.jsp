@@ -66,7 +66,7 @@
 			<tr>
 				<td align="right">Compañia:</td>
 				<td align="left"><input type="text" id="compañia"
-					name="compañia" size="20" value=${videojuego.compañia } /></td>
+					name="compañia" size="20" value=${videojuego.compañia }></td>
 			</tr>
 
 			<tr>
@@ -87,7 +87,7 @@
 			<tr>
 				<td align="right">Precio:</td>
 				<td align="left"><input type="text" id="precio" name="precio"
-					size="20" value=${videojuego.precio } /></td>
+					size="20" value=${videojuego.precio }></td>
 			</tr>
 
 			<tr>
@@ -102,7 +102,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
-					value="Save">
+					value="Guardar">
 
 					<button id="buttonCancel">Cancelar</button>
 			</tr>

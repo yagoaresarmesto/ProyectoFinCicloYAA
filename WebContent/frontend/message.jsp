@@ -7,7 +7,9 @@
 <title></title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/estilos.css">
-</head>
+	<script src="https://kit.fontawesome.com/f5b5688fc0.js"
+	crossorigin="anonymous"></script>
+	</head>
 <body>
 
 	<jsp:directive.include file="header.jsp" />
@@ -16,8 +18,7 @@
 	<br/>
 		<h3>${message}</h3>
 	</div>
-	
-    <jsp:directive.include file="footer.jsp" />
+
 
 </body>
 </html>

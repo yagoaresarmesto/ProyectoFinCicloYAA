@@ -55,7 +55,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit"
-						value="Save">
+						value="Guardar">
 						<button id="buttonCancel">Cancelar</button></td>
 				</tr>
 			</table>

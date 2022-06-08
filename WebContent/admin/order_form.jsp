@@ -116,7 +116,7 @@
 		</div>
 		<div align="center">
 			<br /> <a href="javascript:showAddVideogamePopup()">Añadir
-				videojuegos</a> <input type="submit" value="Save" /> <input
+				videojuegos</a> <input type="submit" value="Guardar" /> <input
 				type="button" value="Cancel"
 				onclick="javascript:window.location.href='list_order';" />
 		</div>

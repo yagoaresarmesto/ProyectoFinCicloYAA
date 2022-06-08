@@ -71,25 +71,25 @@
 			<tr>
 				<td align="right">Dirección:</td>
 				<td align="left"><input type="text" id="direccion"
-					name="direccion" size="45" value=${cliente.direccion } /></td>
+					name="direccion" size="45" value=${cliente.direccion }></td>
 			</tr>
 
 			<tr>
 				<td align="right">Ciudad:</td>
 				<td align="left"><input type="text" id="ciudad" name="ciudad"
-					size="45" value=${cliente.ciudad } /></td>
+					size="45" value=${cliente.ciudad }></td>
 			</tr>
 
 			<tr>
 				<td align="right">Código Postal:</td>
 				<td align="left"><input type="text" id="codigoPostal"
-					name="codigoPostal" size="45" value=${cliente.codigopostal } /></td>
+					name="codigoPostal" size="45" value=${cliente.codigopostal }></td>
 			</tr>
 
 		<tr>
 				<td align="right">País:</td>
 				<td align="left"><input type="text" id="pais" name="pais"
-					size="45" value=${cliente.pais } /></td>
+					size="45" value=${cliente.pais }></td>
 			</tr>
 
 			<tr>
@@ -97,7 +97,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
-					value="Save">
+					value="Guardar">
 
 					<button id="buttonCancel">Cancelar</button>
 			</tr>

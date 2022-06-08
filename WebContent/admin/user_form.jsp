@@ -43,19 +43,19 @@
 			<tr>
 				<td align="right">Apellidos:</td>
 				<td align="left"><input type="text" id="apellidos"
-					name="apellidos" size="20" value=${usuario.apellidos } /></td>
+					name="apellidos" size="20" value=${usuario.apellidos }></td>
 			</tr>
 			<tr>
 				<td align="right">Contraseña:</td>
 				<td align="left"><input type="password" id="contraseña"
-					name="contraseña" size="20" value=${usuario.contraseña } /></td>
+					name="contraseña" size="20" value=${usuario.contraseña }></td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
-					value="Save">
+					value="Guardar">
 					
 					<button id="buttonCancel"> Cancelar</button>
 			</tr>
