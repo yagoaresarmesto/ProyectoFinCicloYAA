@@ -28,19 +28,19 @@
 		<h2>Vista previo de pedidos:</h2>
 		<table>
 			<tr>
-				<td><b>Ordered By: </b></td>
+				<td><b>Pedido Por: </b></td>
 				<td>${pedido.cliente.nombrecompleto}</td>
 			</tr>
 			<tr>
-				<td><b>Order Status: </b></td>
+				<td><b>Estado Pedido: </b></td>
 				<td>${pedido.estadoPedido}</td>
 			</tr>
 			<tr>
-				<td><b>Order Date: </b></td>
+				<td><b>Fecha de pedido: </b></td>
 				<td>${pedido.fechaPedido}</td>
 			</tr>
 			<tr>
-				<td><b>Payment Method: </b></td>
+				<td><b>Método de Pago: </b></td>
 				<td>${pedido.metodoPago}</td>
 			</tr>
 			<tr>

@@ -43,7 +43,7 @@
 		<table>
 			<tr>
 				<td align="right">Nombre:</td>
-				<td align="left"><input type="text" id="nombre" name="nombre"
+				<td align="left"><input class="input-general" type="text" id="nombre" name="nombre"
 					size="20" value="${categoria.nombre}" /></td>
 			</tr>
 			<tr>
@@ -51,7 +51,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center"><input type="submit"
-					value="Save">
+					value="Guardar">
 					<button id="buttonCancel">Cancelar</button></td>
 			</tr>
 		</table>

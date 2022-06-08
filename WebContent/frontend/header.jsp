@@ -5,7 +5,7 @@
 	<header class="header">
 		<div class="contenedor-logo">
 			<a href="${pageContext.request.contextPath}/"> <img
-				src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
+				src="./images/logo.png"
 				width="120" height="80">
 			</a>
 		</div>
@@ -13,7 +13,7 @@
 
 			<form action="search" method="get" class="search-bar">
 				<input type="text" placeholder="Busca en LVCVSGAMES">
-				<button type="submit" value="Search">
+		    	<button type="submit" value="Search">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
 			</form>
@@ -56,7 +56,7 @@
 	<header class="header-logeado">
 		<div class="contenedor-logo">
 			<a href="${pageContext.request.contextPath}/"> <img
-				src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
+				src="./images/logo.png"
 				width="120" height="80">
 			</a>
 		</div>

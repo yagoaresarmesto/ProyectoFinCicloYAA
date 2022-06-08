@@ -2,8 +2,8 @@
 <header class="header-admin">
 	<div class="contenedor-logo-admin">
 		<a href="${pageContext.request.contextPath}/admin/"> <img
-			src="https://cdn.pccomponentes.com/img/logos/logo-pccomponentes.svg"
-			width="120" height="80">
+				src="../images/logo.png"
+				width="120" height="80">
 		</a>
 	</div>
 	<div class="contenedor-titulo-admin">
@@ -11,7 +11,7 @@
 	</div>
 
 	<div class="contenedor-login-logout-admin">
-		Bienvenido, <c:out value="${sessionScope.useremail }"/> | <a href="logout">Logout</a>
+		Bienvenido, <c:out value="${sessionScope.useremail }"/> | <a href="logout">Cerrar sesión</a>
 	</div>
 </header>
 

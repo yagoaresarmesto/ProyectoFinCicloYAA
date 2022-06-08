@@ -19,20 +19,20 @@
 		<h2>No estas autorizado a ver este pedido</h2>
 		</c:if>
 
-		<c:if test="${pedido != null }"><
+		<c:if test="${pedido != null }">
 		<h2>Tu pedido Id: ${pedido.pedidoId }</h2>
-		
+
 	</div>
 
 
 	<div align="center">
 		<table>
 			<tr>
-				<td><b>Order Status: </b></td>
+				<td><b>Estado Pedido: </b></td>
 				<td>${pedido.estadoPedido}</td>
 			</tr>
 			<tr>
-				<td><b>Order Date: </b></td>
+				<td><b>Fecha Pedido: </b></td>
 				<td>${pedido.fechaPedido}</td>
 			</tr>
 
@@ -47,7 +47,7 @@
 			</tr>
 			<tr>
 				<td><b>Total: </b></td>
-				<td><fmt:formatNumber value="${pedido.total}" type="currency" /></td>
+				<td><fmt:formatNumber value="${pedido.total}" type="currency" currencySymbol="$" /></td>
 			</tr>
 
 			<tr>
@@ -86,17 +86,17 @@
 							width="48" height="64" /> ${detallesPedido.videojuego.titulo}</td>
 						<td>${detallesPedido.videojuego.compañia}</td>
 						<td><fmt:formatNumber
-								value="${detallesPedido.videojuego.precio}" type="currency" /></td>
+								value="${detallesPedido.videojuego.precio}" type="currency" currencySymbol="$" /></td>
 						<td>${detallesPedido.cantidad}</td>
 						<td><fmt:formatNumber value="${detallesPedido.subtotal}"
-								type="currency" /></td>
+								type="currency" currencySymbol="$"/></td>
 					</tr>
 				</c:forEach>
 				<tr>
 					<td colspan="4" align="right">TOTAL:</td>
 
 					<td>5</td>
-					<td><fmt:formatNumber value="${pedido.total}" type="currency" />
+					<td><fmt:formatNumber value="${pedido.total}" type="currency" currencySymbol="$" />
 
 					</td>
 				</tr>

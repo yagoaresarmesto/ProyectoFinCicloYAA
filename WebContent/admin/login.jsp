@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login Administrador</title>
 <link rel="stylesheet" href="../css/estilos.css">
 <script src="https://kit.fontawesome.com/f5b5688fc0.js"
 	crossorigin="anonymous"></script>
@@ -14,40 +14,24 @@
 </head>
 <body>
 
-	<div align="center">
-		<h1>Administración</h1>
-		<h2>Login</h2>
-
-		<c:if test="${message !=null}">
-			<div align="center">
-				<h4>${message}</h4>
-			</div>
-		</c:if>
+	<div class="contenedor-login">
 		<form id="LoginForm" action="Login" method="post">
 
-			<table>
-				<tr>
-					<td>Email:</td>
-					<td><input type="text" name="email" size="20"></td>
+			<c:if test="${message !=null}">
+				<div align="center">
+					<h4>${message}</h4>
+				</div>
+			</c:if>
 
-				</tr>
-
-				<tr>
-					<td>Contraseña:</td>
-					<td><input type="password" name="contraseña" size="20"></td>
-
-				</tr>
-
-				<tr>
-					<td>
-
-						<button type="submit">Login</button>
-
-					</td>
-
-				</tr>
-			</table>
-
+			<div class="login">
+				<div class="form">
+					<span class="material-icons"><img src="../images/logo.png"></span>
+					<h2>Panel de administrador</h2>
+					<input type="text" placeholder="Email" name="email" /> <input
+						type="password" placeholder="Contraseña" name="contraseña" />
+					<button type="submit">Inicia Sesión</button>
+				</div>
+			</div>
 		</form>
 	</div>
 

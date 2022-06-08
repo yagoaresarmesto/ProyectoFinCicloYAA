@@ -21,79 +21,38 @@
 
 		<h2>Editar Perfil</h2>
 	</div>
-	<hr>
 	<div align="center">
 		<form action="update_profile" method="post" id="customerForm">
 
-			<table>
-				<tr>
-					<td align="right">Email:</td>
-					<td align="left">${loggedCustomer.email}(No se puede
-						modificar)</td>
-				</tr>
-				<tr>
-					<td align="right">Nombre Completo:</td>
-					<td align="left"><input type="text" id="nombreCompleto"
-						name="nombreCompleto" size="45"
-						value="${loggedCustomer.nombrecompleto }" /></td>
-				</tr>
+			<div class="form">
 
-				<tr>
-					<td align="right">Telefono:</td>
-					<td align="left"><input type="text" id="telefono"
-						name="telefono" size="45" value="${loggedCustomer.telefono }" /></td>
-				</tr>
+				Correo: ${loggedCustomer.email}(Nose puede modificar) <br> <br>
+				<input type="text" id="nombreCompleto" class="input-general"
+					name="nombreCompleto" placeholder="Nombre" size="45"
+					value="${loggedCustomer.nombrecompleto }" /> <input type="text"
+					id="telefono" class="input-general" name="telefono"
+					placeholder="Teléfono" size="45"
+					value="${loggedCustomer.telefono }" /> <input type="text"
+					id="direccion" class="input-general" name="direccion"
+					placeholder="Dirección" size="45"
+					value="${loggedCustomer.direccion }" /> <input type="text"
+					id="ciudad" name="ciudad" class="input-general"
+					placeholder="Ciudad" size="45" value="${loggedCustomer.ciudad }">
+				<input type="text" id="codigoPostal" class="input-general"
+					name="codigoPostal" placeholder="Código Postal" size="45"
+					value="${loggedCustomer.codigopostal }" /> <input type="text"
+					id="pais" name="pais" placeholder="País" class="input-general"
+					size="45" value="${loggedCustomer.pais }"> Deja en blanco
+				si no quieres cambiar la contrasela <input type="password"
+					id="contraseña" class="input-general" name="contraseña"
+					placeholder="Nueva Constraseña" size="45" /> <input
+					type="password" id="confirmarContraseña" class="input-general"
+					name="confirmarContraseña" placeholder="Repite Contraseña"
+					size="45" /> <input type="submit" value="Guardar">
 
-				<tr>
-					<td align="right">Dirección:</td>
-					<td align="left"><input type="text" id="direccion"
-						name="direccion" size="45" value="${loggedCustomer.direccion }"></td>
-				</tr>
+				<button id="buttonCancel">Cancelar</button>
 
-				<tr>
-					<td align="right">Ciudad:</td>
-					<td align="left"><input type="text" id="ciudad" name="ciudad"
-						size="45" value="${loggedCustomer.ciudad }"></td>
-				</tr>
-
-				<tr>
-					<td align="right">Código Postal:</td>
-					<td align="left"><input type="text" id="codigoPostal"
-						name="codigoPostal" size="45"
-						value="${loggedCustomer.codigopostal }" /></td>
-				</tr>
-
-				<tr>
-					<td align="right">País:</td>
-					<td align="left"><input type="text" id="pais" name="pais"
-						size="45"value="${loggedCustomer.pais }"></td>
-				</tr>
-				<tr>
-					<td>Deja en blanco la contraseña si no la desea cambiar la contraseña</td>
-				</tr>
-
-				<tr colspan="2" align="center">
-					<td align="right">Contraseña:</td>
-					<td align="left"><input type="password" id="contraseña"
-						name="contraseña" size="45" /></td>
-				</tr>
-
-				<tr>
-					<td align="right">Confirmar Contraseña:</td>
-					<td align="left"><input type="password"
-						id="confirmarContraseña" name="confirmarContraseña" size="45" /></td>
-				</tr>
-
-				<tr>
-					<td>&nbsp;</td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="Save">
-
-						<button id="buttonCancel">Cancelar</button>
-				</tr>
-			</table>
+			</div>
 		</form>
 	</div>
 

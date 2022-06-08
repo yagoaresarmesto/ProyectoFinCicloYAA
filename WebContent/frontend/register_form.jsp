@@ -23,7 +23,7 @@
 	<div class="login">
 		<form action="register_customer" method="post" id="customerForm">
 			<div class="form">
-				<span class="material-icons">Registrate</span> <input type="text"
+				<span class="material-icons"><img src="./images/logo.png"></span> <input type="text"
 					id="email" name="email" placeholder="Email" /> <input type="text"
 					id="nombreCompleto" name="nombreCompleto"
 					placeholder="Nombre y apellidos" /> <input type="password"

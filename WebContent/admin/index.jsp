@@ -61,12 +61,11 @@
 		Total Reviews: ${totalReviews} &nbsp;&nbsp;&nbsp;&nbsp;
 		Total Pedidos: ${totalPedidos}
 		
-		<hr width="60%" />
 	</div>	
-	<hr>
 
 
 
-	<jsp:directive.include file="footer.jsp" />
+
+
 </body>
 </html>

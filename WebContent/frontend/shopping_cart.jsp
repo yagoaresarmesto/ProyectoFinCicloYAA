@@ -41,10 +41,10 @@
 				<div>
 					<table border="1">
 						<tr>
-							<th>No</th>
-							<th colspan="2">Book</th>
-							<th>Quantity</th>
-							<th>Price</th>
+							<th>Num</th>
+							<th colspan="2">Videojuego</th>
+							<th>Cantidad</th>
+							<th>Precio</th>
 							<th>Subtotal</th>
 							<th></th>
 						</tr>
@@ -60,11 +60,11 @@
 									name="quantity${status.index + 1}" value="${item.value}"
 									size="5" /></td>
 								<td><fmt:formatNumber value="${item.key.precio}"
-										type="currency" /></td>
+										type="currency" currencySymbol="$" /></td>
 								<td><fmt:formatNumber
-										value="${item.value * item.key.precio}" type="currency" /></td>
+										value="${item.value * item.key.precio}" type="currency" currencySymbol="$"/></td>
 								<td><a
-									href="remove_from_cart?videogame_id=${item.key.videojuegoId}">Remove</a></td>
+									href="remove_from_cart?videogame_id=${item.key.videojuegoId}">Eliminar</a></td>
 							</tr>
 						</c:forEach>
 
@@ -91,7 +91,7 @@
 							<td><input type="button" id="clearCart" value="Limpiar Carrito" /></td>
 							<td><a href="${pageContext.request.contextPath}/">Continuar
 									Comprando </a></td>
-							<td><a href="checkout">Checkout</a>
+							<td><a href="checkout">Pagar</a>
 						</tr>
 					</table>
 				</div>

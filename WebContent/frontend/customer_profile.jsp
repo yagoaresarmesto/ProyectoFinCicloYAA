@@ -16,7 +16,7 @@
 
 	<div align="center">
 		<br />
-		<h2>Welcome, ${loggedCustomer.nombrecompleto}</h2>
+		<h2>Bienvendido, ${loggedCustomer.nombrecompleto}</h2>
 		<br />
 		<table>
 			<tr>
@@ -47,7 +47,7 @@
 				<td>&nbsp;</td>
 			</tr>
 			<tr>
-				<td colspan="2" align="center"><b><a href="edit_profile">Edit
+				<td colspan="2" align="center"><b><a href="edit_profile">Editar
 							Mi Perfil</a></b></td>
 			</tr>
 		</table>

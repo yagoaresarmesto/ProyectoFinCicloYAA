@@ -17,19 +17,20 @@
 	<jsp:directive.include file="header.jsp" />
 
 	<div class="contenedor-login">
-	<form id="LoginForm" action="login" method="post">
+		<form id="LoginForm" action="login" method="post">
 
-	
-		<div class="login">
-			<div class="form">
-					<span class="material-icons">Login</span> <input type="text"
-						placeholder="Email" name="email" /> <input type="password"
-						placeholder="Contraseña" name="contraseña"  />
+
+			<div class="login">
+				<div class="form">
+					<span class="material-icons"><img src="./images/logo.png"></span>
+					<input type="text" placeholder="Email" name="email" /> <input
+						type="password" placeholder="Contraseña" name="contraseña" />
 					<button type="submit">Inicia Sesión</button>
-					<br><br>
-					<a href="register">Aún no tiene cuenta? Registrese aquí</a>
+					<br>
+					<br> <a href="register">Aún no tiene cuenta? Registrese
+						aquí</a>
+				</div>
 			</div>
-		</div>
 		</form>
 	</div>
 
@@ -38,12 +39,6 @@
 			<h4>${message}</h4>
 		</div>
 	</c:if>
-
-
-
-
-
-
 
 
 

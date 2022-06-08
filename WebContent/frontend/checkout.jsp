@@ -38,10 +38,10 @@
 				</h2>
 				<table border="1">
 					<tr>
-						<th>No</th>
-						<th colspan="2">Book</th>
+						<th>Num</th>
+						<th colspan="2">Videojuego</th>
 						<th>Compañia
-						<th>Price</th>
+						<th>Precio</th>
 						<th>Cantidad</th>
 						<th>Subtotal</th>
 					</tr>

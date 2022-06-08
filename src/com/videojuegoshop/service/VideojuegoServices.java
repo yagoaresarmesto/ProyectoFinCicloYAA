@@ -213,7 +213,6 @@ public class VideojuegoServices {
 			result = videojuegoDAO.listAll();
 		} else {
 			result = videojuegoDAO.search(keyword);
-
 		}
 		
 		request.setAttribute("keyword", keyword);

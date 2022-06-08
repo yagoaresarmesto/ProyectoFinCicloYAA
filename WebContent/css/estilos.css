@@ -289,8 +289,8 @@ body {
 /*Contenedor Juegos*/
 .contenedor_videojuegos {
 	text-align: center;
-	padding-left: 10%;
-	padding-right: 10%;
+	padding-left: 35%;
+	padding-right: 30%;
 	clear: both;
 	border-bottom: 1px solid #c0c0c0;
 }

@@ -194,10 +194,29 @@ public class VideojuegoDAOTest {
 	}
 
 	@Test
-	public void testSearchVideogameInTitle() {
+	public void testSearchVideogameInTitle() { 
 		String keyword = "Diablo";
 		List<Videojuego> result = videojuegoDao.search(keyword);
 
+		assertEquals(1, result.size());
+	}
+	
+	@Test
+	public void testSearchVideogameInCompany() {
+		String keyword = "Blizzard";
+		List<Videojuego> result = videojuegoDao.search(keyword);
+
+		assertEquals(1, result.size());
+	}
+	
+	@Test
+	public void testSearchVideogameInDescription() {
+		String keyword = "En Diablo II";
+		List<Videojuego> result = videojuegoDao.search(keyword);
+
+		for(Videojuego aVidoejuego : result) {
+		System.out.println(aVidoejuego.getTitulo());	
+		}
 		assertEquals(1, result.size());
 	}
 
